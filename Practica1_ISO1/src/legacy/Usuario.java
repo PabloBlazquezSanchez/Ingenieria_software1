@@ -73,7 +73,7 @@ public class Usuario {
 		Driver derbyEmbeddedDriver = new EmbeddedDriver();
 		DriverManager.registerDriver(derbyEmbeddedDriver);
 		Connection mBD = DriverManager.getConnection(""+BDConstantes.DRIVER+":"+BDConstantes.DBNAME+";create=false", BDConstantes.DBUSER, BDConstantes.DBPASS);
-		PreparedStatement stmt = mBD.prepareStatement("DELETE FROM Usuario WHERE login=\'\' "+this.mLogin+ "AND pass==\'\' "+ this.mPassword);
+		PreparedStatement stmt = mBD.prepareStatement("DELETE FROM Usuario WHERE login=\'"+this.mLogin+ "\' AND pass=\'"+ this.mPassword + "\'");
     	int res=stmt.executeUpdate();
     	stmt.close();
     	mBD.close();
