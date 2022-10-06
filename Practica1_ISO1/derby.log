@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Oct 06 11:03:48 CEST 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0183-ac89-61b4-00000ee43d28 
+on database directory C:\Users\Ámbito académico\Documents\GitHub\Ingenieria_software1\Practica1_ISO1\iso1_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@659e0bfd 
+Loaded from file:/C:/Users/%c3%81mbito%20acad%c3%a9mico/Documents/GitHub/Ingenieria_software1/Practica1_ISO1/lib/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=17+35-LTS-2724
+user.dir=C:\Users\Ámbito académico\Documents\GitHub\Ingenieria_software1\Practica1_ISO1
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
