@@ -6,8 +6,21 @@ public class Usuario {
 	private String dni;
 	private String nombreUsuario;
 	private String contrasena;
-	private long _telefono;
+	private long telefono;
 	public Rol rol;
+	
+	public Usuario(String nombre, String apellidos, String dni, String nombreUsuario, String contrasena, long telefono,
+			Rol rol) {
+		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.dni = dni;
+		this.nombreUsuario = nombreUsuario;
+		this.contrasena = contrasena;
+		this.telefono = telefono;
+		this.rol = rol;
+	}
+	
 	public String get_nombre() {
 		return nombre;
 	}
@@ -39,20 +52,16 @@ public class Usuario {
 		this.contrasena = contrasena;
 	}
 	public long get_telefono() {
-		return _telefono;
+		return telefono;
 	}
 	public void set_telefono(long telefono) {
-		this._telefono = telefono;
+		this.telefono = telefono;
 	}
 	public Rol get_rol() {
 		return rol;
 	}
 	public void set_rol(Rol rol) {
 		this.rol = rol;
-	}
-	public Usuario(String nombre, String apellidos) {
-		this.nombre = nombre;
-		this.apellidos = apellidos;
 	}
 	
 	

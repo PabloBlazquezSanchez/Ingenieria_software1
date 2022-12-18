@@ -7,7 +7,6 @@ public class Paciente extends Usuario {
 	
 	private String _id;
 	private String _tarjSanitaria;
-	public Historial historial;
 	public Vector<Cita> cita = new Vector<Cita>();
 	
 	public String get_id() {
@@ -22,23 +21,13 @@ public class Paciente extends Usuario {
 	public void set_tarjSanitaria(String _tarjSanitaria) {
 		this._tarjSanitaria = _tarjSanitaria;
 	}
-	public Historial get_historial() {
-		return historial;
-	}
-	public void set_historial(Historial historial) {
-		this.historial = historial;
-	}
-	public Vector<Cita> get_cita() {
+
+
+	public Vector<Cita> get_citas() {
 		return cita;
 	}
-	public void set_cita(Vector<Cita> _cita) {
-		this.cita = _cita;
-	}
-	public Vector<Cita> get_citas() {
-		return _cita;
-	}
 	public void set_citas(Vector<Cita> _citas) {
-		this._citas = _citas;
+		this.citas = _citas;
 	}
 	public Paciente(String _id, String nombre, String apellido) {
 		super(nombre, apellido);

@@ -3,7 +3,9 @@
 
 	import java.awt.EventQueue;
 	import Capa_Persistencia.AgenteBD;
-	import Persistencia.BDConstantes;
+import Dominio.Usuario;
+import Dominio.Controladores.GestorUsuario;
+import Persistencia.BDConstantes;
 
 	import javax.swing.JFrame;
 	import javax.swing.JPanel;
@@ -11,10 +13,7 @@
 
 	import org.apache.derby.jdbc.EmbeddedDriver;
 
-	import Capa_Dominio.GestorUsuario;
-	import Capa_Dominio.Usuario;
-
-	import javax.swing.JLabel;
+import javax.swing.JLabel;
 
 	import javax.swing.JTextField;
 	import javax.swing.JButton;

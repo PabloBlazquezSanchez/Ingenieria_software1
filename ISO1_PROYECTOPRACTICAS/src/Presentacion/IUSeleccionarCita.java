@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
-import Capa_Dominio.GestorUsuario;
 import Capa_Persistencia.AgenteBD;
+import Dominio.Controladores.GestorUsuario;
+
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;

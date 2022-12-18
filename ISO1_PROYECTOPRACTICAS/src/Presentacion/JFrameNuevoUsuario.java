@@ -6,10 +6,10 @@
 	import javax.swing.JPanel;
 	import javax.swing.border.EmptyBorder;
 
-	import Capa_Dominio.GestorUsuario;
-	import Capa_Dominio.Usuario;
+import Dominio.Usuario;
+import Dominio.Controladores.GestorUsuario;
 
-	import java.awt.FlowLayout;
+import java.awt.FlowLayout;
 
 	import javax.swing.JLabel;
 	import javax.swing.JTextField;

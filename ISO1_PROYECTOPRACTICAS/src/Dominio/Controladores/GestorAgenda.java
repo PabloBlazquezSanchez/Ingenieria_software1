@@ -1,4 +1,4 @@
-package VistaEstatica.Dominio.Controladores;
+package Dominio.Controladores;
 
 import VistaEstatica.Dominio.Entidades.Horario;
 import VistaEstatica.Dominio.Entidades.Calendario;

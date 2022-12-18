@@ -1,4 +1,4 @@
-package Capa_Dominio;
+package Dominio.Controladores;
 
 import Capa_Persistencia.AgenteBD;
 

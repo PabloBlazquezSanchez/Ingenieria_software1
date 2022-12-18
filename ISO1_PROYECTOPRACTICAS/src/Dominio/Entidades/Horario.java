@@ -1,4 +1,4 @@
-package VistaEstatica.Dominio.Entidades;
+package Dominio.Entidades;
 
 public class Horario {
 	private Date _horas_laborables;

@@ -2,7 +2,7 @@ package VistaEstatica.Persistencia;
 
 import VistaEstatica.Dominio.Entidades.Paciente;
 
-public class PacienteDAO {
+public class PacienteDAO extends UsuarioDAO {
 
 	public Paciente selectPaciente(String aDni) {
 		throw new UnsupportedOperationException();

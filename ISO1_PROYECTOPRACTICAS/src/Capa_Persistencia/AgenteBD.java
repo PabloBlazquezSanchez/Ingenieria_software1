@@ -11,7 +11,7 @@ import java.util.Vector;
 
 import org.apache.derby.jdbc.EmbeddedDriver;
 
-import Capa_Dominio.Usuario;
+import Dominio.Usuario;
 import Persistencia.BDConstantes;
 
 public class AgenteBD {

@@ -1,4 +1,4 @@
-package VistaEstatica.Dominio.Entidades;
+package Dominio.Entidades;
 
 public enum TipoSlot {
 	SIN_ASIGNAR, 

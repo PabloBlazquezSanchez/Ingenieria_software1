@@ -1,4 +1,4 @@
-package VistaEstatica.Dominio.Controladores;
+package Dominio.Controladores;
 
 import VistaEstatica.Persistencia.CitaDAO;
 import VistaEstatica.Dominio.Entidades.Paciente;
