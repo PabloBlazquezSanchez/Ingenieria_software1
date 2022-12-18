@@ -1,0 +1,19 @@
+----------------------------------------------------------------
+Sun Dec 18 01:13:37 CET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0185-2294-37a8-00000f4acb60 
+on database directory C:\Users\Ámbito académico\Desktop\SEGUNDO_UCLM\ISO1_PRACTICA2\iso1_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@659e0bfd 
+Loaded from file:/C:/Users/%c3%81mbito%20acad%c3%a9mico/Desktop/SEGUNDO_UCLM/ISO1_PRACTICA2/lib/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=17+35-LTS-2724
+user.dir=C:\Users\Ámbito académico\Desktop\SEGUNDO_UCLM\ISO1_PRACTICA2
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Dec 18 01:13:37 CET 2022: Shutting down Derby engine
+----------------------------------------------------------------
+Sun Dec 18 01:13:37 CET 2022:
+Shutting down instance a816c00e-0185-2294-37a8-00000f4acb60 on database directory C:\Users\Ámbito académico\Desktop\SEGUNDO_UCLM\ISO1_PRACTICA2\iso1_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@659e0bfd 
+----------------------------------------------------------------
