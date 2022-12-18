@@ -2,6 +2,7 @@ package VistaEstatica.Dominio.Entidades;
 
 import java.util.Vector;
 import Design_Model.VistaEstatica.Dominio.Entidades.Slot;
+import Dominio.Entidades.Cita;
 
 public class Agenda {
 	public Especialista _especialista;

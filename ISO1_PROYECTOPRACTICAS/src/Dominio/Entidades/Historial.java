@@ -1,4 +1,4 @@
-package VistaEstatica.Dominio.Entidades;
+package Dominio.Entidades;
 
 import java.util.Vector;
 import Design_Model.VistaEstatica.Dominio.Entidades.Tratamiento;

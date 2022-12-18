@@ -50,5 +50,11 @@ public class Usuario {
 	public void set_rol(Rol rol) {
 		this.rol = rol;
 	}
+	public Usuario(String nombre, String apellidos) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+	}
+	
+	
 
 }

@@ -1,5 +1,7 @@
 package VistaEstatica.Dominio.Entidades;
 
+import Dominio.Entidades.Historial;
+
 public class Tratamiento {
 	private Date _fechaInicio;
 	private Date _fechaFin;

@@ -13,7 +13,7 @@ import org.apache.derby.jdbc.EmbeddedDriver;
 public class GestorBaseDatos {
 	
 	private static GestorBaseDatos instancia = null;
-	protected static Connection mBD = null;
+	protected static Connection mBD;
 
 	public GestorBaseDatos() throws SQLException {
 		conectarBD();		
@@ -26,12 +26,12 @@ public class GestorBaseDatos {
 		return instancia;
 	}
 
-	public GestorBaseDatos conectarBD() throws SQLException {
+	public static Connection conectarBD() throws SQLException {
 		Driver derbyEmbeddedDriver = new EmbeddedDriver();
 		DriverManager.registerDriver(derbyEmbeddedDriver);
 		mBD = DriverManager.getConnection("" + BDConstantes.DRIVER + ":" + BDConstantes.DBNAME + ";create=false",
 				BDConstantes.DBUSER, BDConstantes.DBPASS);
-		return this;
+		return mBD;
 	}
 
 	public static void desconectarBD() throws SQLException {
@@ -39,10 +39,12 @@ public class GestorBaseDatos {
 		instancia = null;
 	}
 
-	public Vector<Object> select(String sql) throws SQLException {
+	public static Vector<Object> select(String sql) throws SQLException {
 		/* Metodo para realizar una busqueda o seleccion de informacion en la base de datos.
 		 * Develve un vector de vectores, donde cada uno de los vectores que contiene el vector principal representa los registros que se recuperan de la base de datos. */
 		System.out.println(sql);
+		
+		conectarBD();
 
 		Vector<Object> vectoradevolver = new Vector<Object>();
 		Statement stmt = mBD.createStatement();

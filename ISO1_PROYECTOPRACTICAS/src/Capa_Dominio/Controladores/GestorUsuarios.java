@@ -1,11 +1,13 @@
 package VistaEstatica.Dominio.Controladores;
 
+import Dominio.Entidades.Paciente;
+import Persistencia.PacienteDAO;
 import VistaEstatica.Persistencia.UsuarioDAO;
 
 public class GestorUsuarios {
 	public UsuarioDAO _usuarioDAO;
 
-	public void loginEmpleado(String aNombreUsuario, String aContraseña) {
+	public void loginEmpleado(String aNombreUsuario, String aContraseï¿½a) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -15,5 +17,8 @@ public class GestorUsuarios {
 
 	public void registrarPaciente() {
 		throw new UnsupportedOperationException();
+	}
+	public Paciente selecPaciente() {
+		return PacienteDAO.select();
 	}
 }

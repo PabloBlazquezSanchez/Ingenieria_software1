@@ -1,5 +1,7 @@
 package VistaEstatica.Dominio.Entidades;
 
+import Dominio.Entidades.Historial;
+
 public class Patologia {
 	private String _nombre;
 	private Date _inicio;

@@ -1,5 +1,7 @@
 package VistaEstatica.Dominio.Entidades;
 
+import Dominio.Entidades.Cita;
+
 public class Slot {
 	private Date _fechaInicio;
 	private Date _fechaFin;

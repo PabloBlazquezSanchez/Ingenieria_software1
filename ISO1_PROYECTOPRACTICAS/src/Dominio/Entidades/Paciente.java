@@ -4,6 +4,12 @@ import java.util.Vector;
 import Design_Model.VistaEstatica.Dominio.Entidades.Cita;
 
 public class Paciente extends Usuario {
+	
+	private String _id;
+	private String _tarjSanitaria;
+	public Historial historial;
+	public Vector<Cita> cita = new Vector<Cita>();
+	
 	public String get_id() {
 		return _id;
 	}
@@ -19,23 +25,23 @@ public class Paciente extends Usuario {
 	public Historial get_historial() {
 		return historial;
 	}
-	public void set_historial(Historial _historial) {
+	public void set_historial(Historial historial) {
 		this.historial = historial;
 	}
 	public Vector<Cita> get_cita() {
 		return cita;
 	}
 	public void set_cita(Vector<Cita> _cita) {
-		this._cita = _cita;
+		this.cita = _cita;
 	}
 	public Vector<Cita> get_citas() {
-		return _citas;
+		return _cita;
 	}
 	public void set_citas(Vector<Cita> _citas) {
 		this._citas = _citas;
 	}
-	private String _id;
-	private String _tarjSanitaria;
-	public Historial historial;
-	public Vector<Cita> _cita = new Vector<Cita>();
+	public Paciente(String _id, String nombre, String apellido) {
+		super(nombre, apellido);
+		this._id = _id;
+	}
 }
