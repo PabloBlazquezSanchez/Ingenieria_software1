@@ -1,4 +1,4 @@
-Sun Dec 18 14:03:17 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
+Sun Dec 18 15:01:30 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
 java.sql.SQLException: Database 'iso1' not found.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
@@ -118,7 +118,7 @@ ERROR XJ004: Database 'iso1' not found.
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
 ============= end nested exception, level (1) ===========
 Cleanup action completed
-Sun Dec 18 14:03:17 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
+Sun Dec 18 15:01:30 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
 java.sql.SQLException: Database 'iso1' not found.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
