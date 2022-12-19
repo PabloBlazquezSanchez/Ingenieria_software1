@@ -16,8 +16,7 @@ public class GestorUsuarios {
 		Paciente p = new Paciente(nombre, null, id, null, null, 0, null, null);
 		Paciente p2 = PacienteDAO.selectPaciente(p);
 		if (p.get_dni().equals(p2.get_dni())&&p.get_nombre().equals(p2.get_nombre())) {
-			autentificado = true;
-			System.out.println(autentificado);}
+			autentificado = true;}
 		return autentificado;
 
 	}
