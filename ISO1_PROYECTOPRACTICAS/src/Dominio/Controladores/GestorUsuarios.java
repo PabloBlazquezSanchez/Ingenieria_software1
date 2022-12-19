@@ -30,7 +30,7 @@ public class GestorUsuarios {
 
 	}
 
-	public void registrarPaciente() {
+	public void registrarPaciente() { //No entra en los casos de uso seleccionados
 		throw new UnsupportedOperationException();
 	}
 

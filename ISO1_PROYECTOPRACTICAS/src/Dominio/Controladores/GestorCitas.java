@@ -1,19 +1,21 @@
 package Dominio.Controladores;
 
-import VistaEstatica.Persistencia.CitaDAO;
-import VistaEstatica.Dominio.Entidades.Paciente;
-import VistaEstatica.Dominio.Entidades.Especialista;
-import VistaEstatica.Dominio.Entidades.Cita;
+import Persistencia.CitaDAO;
+import Dominio.Entidades.Paciente;
+import Dominio.Entidades.Especialista;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import Dominio.Entidades.Cita;
 
 public class GestorCitas {
-	public CitaDAO _citaDAO;
+	public CitaDAO citaDAO;
 
-	public void solicitarCita(Date aFecha, Paciente aPaciente, Especialista aEspecialista) {
-		throw new UnsupportedOperationException();
+	public void solicitarCita(Date fecha, Paciente paciente, Especialista especialista) {
 	}
 
-	public void anularCita(Paciente aPaciente, Cita aCita) {
-		throw new UnsupportedOperationException();
+	public void anularCita(Paciente aPaciente, Cita aCita) { //No entra en los casos de uso seleccionados.
 	}
 
 	public ArrayList<Cita> leerCitas() {

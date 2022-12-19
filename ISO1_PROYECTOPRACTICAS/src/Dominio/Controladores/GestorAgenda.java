@@ -1,9 +1,9 @@
 package Dominio.Controladores;
 
-import VistaEstatica.Dominio.Entidades.Horario;
-import VistaEstatica.Dominio.Entidades.Calendario;
-import VistaEstatica.Dominio.Entidades.Agenda;
-import VistaEstatica.Dominio.Entidades.Slot;
+import Dominio.Entidades.Horario;
+import Dominio.Entidades.Calendario;
+import Dominio.Entidades.Agenda;
+import Dominio.Entidades.Slot;
 
 public class GestorAgenda {
 
