@@ -9,14 +9,13 @@ import Persistencia.PacienteDAO;
 
 public class GestorUsuarios {
 
-	public void loginEmpleado(String NombreUsuario, String Contrasena) {
+	public boolean loginEmpleado(String NombreUsuario, String Contrasena) throws SQLException {
 		boolean autentificado = false;
 		Empleado e = new Empleado(null, null, null, NombreUsuario, Contrasena, 0, null);
-		Empleado e = EmpleadoDAO.selectEmpleado(e);
-		if (p.get_dni().equals(p2.get_dni())&&p.get_nombre().equals(p2.get_nombre())) {
+		Empleado e2 = EmpleadoDAO.selectEmpleado(e);
+		if (e.get_nombreUsuario().equals(e2.get_nombreUsuario())&&e.get_contrasena().equals(e2.get_contrasena())) {
 			autentificado = true;}
 		return autentificado;
-	
 	}
 
 	public static boolean loginPaciente(String nombre, String id) throws SQLException {
