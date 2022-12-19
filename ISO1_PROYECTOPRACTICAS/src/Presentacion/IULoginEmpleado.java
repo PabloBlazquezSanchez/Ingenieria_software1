@@ -31,7 +31,7 @@ import javax.swing.JLabel;
 	import javax.swing.JTextPane;
 import java.awt.Font;
 
-	public class IULoginempleado extends JFrame {
+	public class IULoginEmpleado extends JFrame {
 
 		private JPanel contentPane;
 		private JTextField textFieldLogin;
@@ -45,7 +45,7 @@ import java.awt.Font;
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						IULoginempleado frame = new IULoginempleado();
+						IULoginEmpleado frame = new IULoginEmpleado();
 						frame.setVisible(true);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -57,7 +57,7 @@ import java.awt.Font;
 		/**
 		 * Create the frame.
 		 */
-		public IULoginempleado() {
+		public IULoginEmpleado() {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 438, 385);
 			contentPane = new JPanel();
@@ -84,7 +84,7 @@ import java.awt.Font;
 						if (GestorUsuarios.loginEmpleado(textFieldLogin.getText(), textFieldPassword.getText())==true)
 							existe = true;
 						if (existe) {
-							IUSeleccionarCita p = new IUSeleccionarCita();
+							IUGestionarAgenda p = new IUGestionarAgenda();
 							p.setVisible(true);
 						} else {
 							textPaneEstado.setText("El login ha sido incorrecto");

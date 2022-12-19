@@ -128,11 +128,11 @@ import java.awt.Font;
 			lblNewLabel.setBounds(109, 10, 239, 21);
 			contentPane.add(lblNewLabel);
 			
-			JLabel lblNewLabel_1 = new JLabel("Las especialidades disponibles en esta clínica son:");
+			JLabel lblNewLabel_1 = new JLabel("En esta clínica puedes encontrar:");
 			lblNewLabel_1.setBounds(31, 175, 370, 13);
 			contentPane.add(lblNewLabel_1);
 			
-			JLabel lblNewLabel_1_1 = new JLabel("- Traumatología  - Ginecología  - Reumatología  - Dermatología");
+			JLabel lblNewLabel_1_1 = new JLabel("- Podólogos  - Médicos de cabecera  - Especialistas");
 			lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
 			lblNewLabel_1_1.setBounds(54, 188, 370, 23);
 			contentPane.add(lblNewLabel_1_1);

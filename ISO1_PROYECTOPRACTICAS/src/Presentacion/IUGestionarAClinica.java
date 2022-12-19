@@ -14,8 +14,6 @@
 	import javax.swing.JTextPane;
 	import javax.swing.border.EmptyBorder;
 
-import Dominio.Controladores.GestorUsuario;
-import Persistencia.AgenteBD;
 
 import javax.swing.JScrollPane;
 	import javax.swing.JComboBox;
