@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.Vector;
 import Dominio.Entidades.Paciente;
 
-
 public class PacienteDAO extends UsuarioDAO {
 
 	public static Paciente selectPaciente(Paciente p) throws SQLException {
