@@ -39,11 +39,8 @@ public class GestorBaseDatos {
 		instancia = null;
 	}
 
-	public static Vector<Object> select(String sql) throws SQLException {
-		/* Metodo para realizar una busqueda o seleccion de informacion en la base de datos.
-		 * Develve un vector de vectores, donde cada uno de los vectores que contiene el vector principal representa los registros que se recuperan de la base de datos. */
+	public Vector<Object> select(String sql) throws SQLException {
 		System.out.println(sql);
-		
 		conectarBD();
 
 		Vector<Object> vectoradevolver = new Vector<Object>();
@@ -83,12 +80,7 @@ public class GestorBaseDatos {
 		return res;  
 	}
 
-	public void operation() {
-		// TODO - implement GestorBD.operation
-		throw new UnsupportedOperationException();
-	}
 
-	// TODO BORRAR FUNCIÓN
 	public static void crearBaseDeDatos() throws Exception {
 		try {
 		    Connection connection = DriverManager.getConnection(BDConstantes.CONNECTION_STRING, BDConstantes.DBUSER, BDConstantes.DBPASS);

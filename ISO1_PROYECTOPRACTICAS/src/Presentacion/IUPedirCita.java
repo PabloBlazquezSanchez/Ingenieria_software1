@@ -1,12 +1,13 @@
 package Presentacion;
 
 	import java.awt.EventQueue;
-	import Capa_Persistencia.AgenteBD;
+
 import Dominio.Usuario;
 import Dominio.Controladores.GestorUsuario;
+import Persistencia.AgenteBD;
 import Persistencia.BDConstantes;
 
-	import javax.swing.JFrame;
+import javax.swing.JFrame;
 	import javax.swing.JPanel;
 	import javax.swing.border.EmptyBorder;
 

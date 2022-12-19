@@ -1,11 +1,14 @@
 package Dominio.Entidades;
 
 import java.util.Vector;
-import Design_Model.VistaEstatica.Dominio.Entidades.Cita;
-import Design_Model.VistaEstatica.Dominio.Entidades.Nomina;
 
 public class Especialista extends Empleado {
+	public Especialista(String nombre, String apellidos, String dni, String nombreUsuario, String contrasena,
+			long telefono, Rol rol) {
+		super(nombre, apellidos, dni, nombreUsuario, contrasena, telefono, rol);
+		this.citas=citas;
+		this.agenda=agenda;
+	}
 	public Vector<Cita> citas = new Vector<Cita>();
-	public Vector<Nomina> nomina = new Vector<Nomina>();
 	public Agenda agenda;
 }

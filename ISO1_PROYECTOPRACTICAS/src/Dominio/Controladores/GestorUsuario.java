@@ -1,6 +1,6 @@
 package Dominio.Controladores;
 
-import Capa_Persistencia.AgenteBD;
+import Persistencia.AgenteBD;
 
 public class GestorUsuario {
 	public int update() throws Exception {

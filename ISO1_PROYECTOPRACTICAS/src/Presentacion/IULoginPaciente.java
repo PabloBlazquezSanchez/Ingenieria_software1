@@ -2,12 +2,13 @@
 	package Presentacion;
 
 	import java.awt.EventQueue;
-	import Capa_Persistencia.AgenteBD;
-import Dominio.Usuario;
+
 import Dominio.Controladores.GestorUsuario;
+import Dominio.Controladores.GestorUsuarios;
+import Persistencia.AgenteBD;
 import Persistencia.BDConstantes;
 
-	import javax.swing.JFrame;
+import javax.swing.JFrame;
 	import javax.swing.JPanel;
 	import javax.swing.border.EmptyBorder;
 
@@ -82,16 +83,16 @@ import java.awt.Font;
 				public void actionPerformed(ActionEvent arg0) {
 					boolean existe = false;
 					try {
-						if (GestorUsuario.autenticar(textFieldLogin.getText(), textFieldPassword.getText()) ==true)
+						if (GestorUsuarios.loginPaciente(textFieldLogin.getText(), textFieldPassword.getText()) ==true)
 							existe = true;
 						if (existe) {
-							IULoginPaciente p = new IULoginPaciente();
+							IUSeleccionarCita p = new IUSeleccionarCita();
 							p.setVisible(true);
 						} else {
 							textPaneEstado.setText("El login ha sido incorrecto");
 						}
 					} catch (Exception e) {
-						textPaneEstado.setText("Ha ocurrido un error, vuelva a intentarlo" + e.toString());
+						textPaneEstado.setText("Ha ocurrido un error, vuelva a intentarlo");
 					}
 
 				}

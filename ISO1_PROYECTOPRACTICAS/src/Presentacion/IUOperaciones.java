@@ -18,6 +18,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import Dominio.Entidades.Paciente;
 import Persistencia.PacienteDAO;
  
 public class IUOperaciones extends JFrame {
@@ -29,7 +30,6 @@ public class IUOperaciones extends JFrame {
 	 */
 	public static void main(String[] args) {
 		try {
-			PacienteDAO.select();
 			IUOperaciones dialog = new IUOperaciones();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);

@@ -1,18 +1,10 @@
 package Persistencia;
 
-import VistaEstatica.Dominio.Entidades.Usuario;
+import Dominio.Entidades.Usuario;
 
 public class UsuarioDAO {
 
-	public Usuario selectUsuario(String aNombre, String aPass) {
-		throw new UnsupportedOperationException();
-	}
-
-	public int nuevoUsuario(Usuario aU) {
-		throw new UnsupportedOperationException();
-	}
-
-	public Usuario getUsuario(Usuario aU) {
+	public Usuario selectUsuario(Usuario u) {
 		throw new UnsupportedOperationException();
 	}
 }

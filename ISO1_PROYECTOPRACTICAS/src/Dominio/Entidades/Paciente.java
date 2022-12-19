@@ -1,36 +1,41 @@
 package Dominio.Entidades;
 
 import java.util.Vector;
-import Design_Model.VistaEstatica.Dominio.Entidades.Cita;
 
 public class Paciente extends Usuario {
-	
-	private String _id;
-	private String _tarjSanitaria;
+	private String id;
+	private String tarjSanitaria;
 	public Vector<Cita> cita = new Vector<Cita>();
 	
-	public String get_id() {
-		return _id;
-	}
-	public void set_id(String _id) {
-		this._id = _id;
-	}
-	public String get_tarjSanitaria() {
-		return _tarjSanitaria;
-	}
-	public void set_tarjSanitaria(String _tarjSanitaria) {
-		this._tarjSanitaria = _tarjSanitaria;
+	public Paciente(String nombre, String apellidos, String dni, String nombreUsuario, String contrasena, long telefono,
+			Rol rol, Vector<Cita> cita) {
+		super(nombre, apellidos, dni, nombreUsuario, contrasena, telefono, rol);
+		this.id=dni;
+		this.cita=cita;
 	}
 
+	public String getId() {
+		return id;
+	}
 
-	public Vector<Cita> get_citas() {
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getTarjSanitaria() {
+		return tarjSanitaria;
+	}
+
+	public void setTarjSanitaria(String tarjSanitaria) {
+		this.tarjSanitaria = tarjSanitaria;
+	}
+
+	public Vector<Cita> getCita() {
 		return cita;
 	}
-	public void set_citas(Vector<Cita> _citas) {
-		this.citas = _citas;
+
+	public void setCita(Vector<Cita> cita) {
+		this.cita = cita;
 	}
-	public Paciente(String _id, String nombre, String apellido) {
-		super(nombre, apellido);
-		this._id = _id;
-	}
+
 }
