@@ -63,8 +63,6 @@ public class IUSeleccionarCita extends JFrame {
 		textFieldFecha.setColumns(10);
 
 		JButton buttonAceptar = new JButton("Aceptar");
-
-
 			
 		buttonAceptar.setBounds(358, 69, 148, 29);
 		contentPane.add(buttonAceptar);

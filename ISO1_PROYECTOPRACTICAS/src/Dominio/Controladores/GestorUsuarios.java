@@ -9,7 +9,7 @@ import Persistencia.PacienteDAO;
 
 public class GestorUsuarios {
 
-	public boolean loginEmpleado(String NombreUsuario, String Contrasena) throws SQLException {
+	public static boolean loginEmpleado(String NombreUsuario, String Contrasena) throws SQLException {
 		boolean autentificado = false;
 		Empleado e = new Empleado(null, null, null, NombreUsuario, Contrasena, 0, null);
 		Empleado e2 = EmpleadoDAO.selectEmpleado(e);

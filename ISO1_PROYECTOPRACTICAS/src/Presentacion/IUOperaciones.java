@@ -44,26 +44,31 @@ public class IUOperaciones extends JFrame {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.WEST);
 
-		JLabel lblNewLabel = new JLabel("Seleccionar operación");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
+		JLabel titulo = new JLabel("Seleccionar operación");
+		titulo.setFont(new Font("Tahoma", Font.BOLD, 17));
 
-		JButton btnNewButton_1 = new JButton("Pedir cita");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton cita = new JButton("Pedir cita");
+		cita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				IULoginPaciente p = new IULoginPaciente();
 				p.setVisible(true);
 			}
 		});
 
-		JLabel lblSiAunNo = new JLabel("Selecciona la operación que deseas realizar:");
-		lblSiAunNo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel texto2 = new JLabel("Selecciona la operación que deseas realizar:");
+		texto2.setFont(new Font("Tahoma", Font.BOLD, 11));
 
-		JButton btnNewButton_1_1_1 = new JButton("Configurar agenda mensual con horas en consulta");
+		JButton agenda = new JButton("Configurar agenda mensual");
+		agenda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IULoginEmpleado p = new IULoginEmpleado();
+				p.setVisible(true);
+				
+			}
+		});
 
-		JButton btnNewButton_1_1_1_1 = new JButton("Configurar agenda mensual con horas en domicilio");
-
-		JButton btnNewButton_1_1 = new JButton("Registrar paciente");
-		btnNewButton_1_1.addActionListener(new ActionListener() {
+		JButton registro = new JButton("Registrar paciente");
+		registro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				IURegistrarPaciente p = new IURegistrarPaciente();
 				p.setVisible(true);
@@ -75,39 +80,35 @@ public class IUOperaciones extends JFrame {
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap(26, Short.MAX_VALUE)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)
-							.addGap(72))
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addComponent(lblSiAunNo, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-							.addGap(25))))
-				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addGap(51)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_1_1, GroupLayout.PREFERRED_SIZE, 318, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(btnNewButton_1_1_1_1, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-							.addComponent(btnNewButton_1_1_1, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-							.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addComponent(registro, GroupLayout.PREFERRED_SIZE, 318, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
+							.addComponent(cita, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(agenda, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 319, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(62, Short.MAX_VALUE))
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(26)
+					.addComponent(texto2, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(25, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
+					.addContainerGap(121, Short.MAX_VALUE)
+					.addComponent(titulo, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)
+					.addGap(72))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel)
+					.addGap(25)
+					.addComponent(titulo)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblSiAunNo, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1_1_1)
+					.addComponent(texto2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(cita)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnNewButton_1_1_1_1)
+					.addComponent(agenda)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnNewButton_1_1)
+					.addComponent(registro)
 					.addContainerGap(38, Short.MAX_VALUE))
 		);
 		contentPanel.setLayout(gl_contentPanel);
