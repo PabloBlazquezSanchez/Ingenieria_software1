@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -17,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+
+import Dominio.Controladores.GestorAgenda;
 import Dominio.Entidades.TipoAgenda;
 
 public class IUGestionarAgenda extends JFrame {
@@ -41,8 +44,9 @@ public class IUGestionarAgenda extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
 	 */
-	public IUGestionarAgenda() {
+	public IUGestionarAgenda() throws SQLException {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -112,8 +116,7 @@ public class IUGestionarAgenda extends JFrame {
 				comboBox.setEnabled(true);
 			}
 		});
-
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Médicos de cabecera", "fisioterapeutas", "podólogos"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
 		comboBox_1.setEnabled(false);
 		comboBox_1.setBounds(185, 119, 134, 25);
 		contentPane.add(comboBox_1);
