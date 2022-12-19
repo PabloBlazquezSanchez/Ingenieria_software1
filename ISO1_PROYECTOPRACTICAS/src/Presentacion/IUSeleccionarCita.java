@@ -121,7 +121,7 @@ public class IUSeleccionarCita extends JFrame {
 				comboBox.setEnabled(true);
 			}
 		});
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Médicos de cabecera", "fisioterapeutas", "podólogos"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Médico de cabecera", "Fisioterapeuta", "Podólogo"}));
 		comboBox_1.setBounds(185, 174, 134, 25);
 		contentPane.add(comboBox_1);
 		
