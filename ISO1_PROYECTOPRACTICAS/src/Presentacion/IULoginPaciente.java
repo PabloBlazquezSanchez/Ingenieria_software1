@@ -3,10 +3,9 @@
 
 	import java.awt.EventQueue;
 
-import Dominio.Controladores.GestorUsuario;
 import Dominio.Controladores.GestorUsuarios;
-import Persistencia.AgenteBD;
 import Persistencia.BDConstantes;
+import Persistencia.GestorBaseDatos;
 
 import javax.swing.JFrame;
 	import javax.swing.JPanel;
@@ -15,6 +14,7 @@ import javax.swing.JFrame;
 	import org.apache.derby.jdbc.EmbeddedDriver;
 
 import javax.swing.JLabel;
+
 
 	import javax.swing.JTextField;
 	import javax.swing.JButton;
@@ -46,7 +46,6 @@ import java.awt.Font;
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						AgenteBD.crearBaseDatosSinoExiste();
 						IULoginPaciente frame = new IULoginPaciente();
 						frame.setVisible(true);
 					} catch (Exception e) {
@@ -92,7 +91,7 @@ import java.awt.Font;
 							textPaneEstado.setText("El login ha sido incorrecto");
 						}
 					} catch (Exception e) {
-						textPaneEstado.setText("Ha ocurrido un error, vuelva a intentarlo");
+						textPaneEstado.setText("El usuario introducido no existe.");
 					}
 
 				}

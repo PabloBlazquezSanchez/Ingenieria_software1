@@ -9,9 +9,9 @@ import Dominio.Entidades.Rol;
 
 public class EmpleadoDAO extends UsuarioDAO {
 
-	public static Empleado selectPaciente(Empleado e) throws SQLException {
+	public static Empleado selectEmpleado(Empleado e) throws SQLException {
 		Vector datosEmpleado = GestorBaseDatos.getInstancia()
-				.select("SELECT * FROM empleado WHERE dni='" + e.get_dni() + "'");
+				.select("SELECT * FROM empleado WHERE nombreusario'" + e.get_nombreUsuario() + "'");
 		datosEmpleado = (Vector) datosEmpleado.get(0);
 
 		if (datosEmpleado.isEmpty()) {
@@ -24,5 +24,8 @@ public class EmpleadoDAO extends UsuarioDAO {
 			e = new Empleado(nombre, apellido, dni, null, null, 0, rol);
 		}
 		return e;
+	}
+
+
 	}
 }
