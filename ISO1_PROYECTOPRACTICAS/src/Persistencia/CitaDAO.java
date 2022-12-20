@@ -41,9 +41,8 @@ public class CitaDAO {
 		for (int i = 0; i < citasanteriores.size(); i++) {
 
 			Vector cita = (Vector) citasanteriores.get(i);
-			if (cita.get(3).toString().equals(especialidad)) {
+			if (cita.get(3).toString().toLowerCase().equals(especialidad)) {
 				dni = (String) cita.get(2);
-				System.out.println(dni + "  e");
 			}
 		}
 		return dni;

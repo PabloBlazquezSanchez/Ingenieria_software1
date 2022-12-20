@@ -42,6 +42,8 @@ public class GestorUsuarios {
 		return p3;
 
 	}
+	
+	
 	public void registrarPaciente() { //No entra en los casos de uso seleccionados
 		throw new UnsupportedOperationException();
 	}

@@ -101,7 +101,7 @@ public class IUSeleccionarCita extends JFrame {
 				comboBox.setEnabled(true);
 				String especialidad = null;
 				if (comboBox_1.getSelectedItem().toString().equals("Médico de cabecera")) {
-					especialidad = "medicocabecera";
+					especialidad = "MEDICO_CABECERA";
 				} else if (comboBox_1.getSelectedItem().toString().equals("Fisioterapeuta")) {
 					especialidad = "fisioterapeuta";
 				} else {

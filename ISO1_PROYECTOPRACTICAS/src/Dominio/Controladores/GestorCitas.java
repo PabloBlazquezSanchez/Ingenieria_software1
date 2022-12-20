@@ -1,6 +1,7 @@
 package Dominio.Controladores;
 
 import Persistencia.CitaDAO;
+import Persistencia.EmpleadoDAO;
 import Dominio.Entidades.Paciente;
 import Dominio.Entidades.Slot;
 import Dominio.Entidades.Especialista;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import Dominio.Entidades.Cita;
+import Dominio.Entidades.Empleado;
 
 public class GestorCitas {
 	public CitaDAO citaDAO;
@@ -21,20 +23,21 @@ public class GestorCitas {
 		System.out.println(fecha + " " + tipoespecialista);
 		System.out.println(fecha + " " + tipoespecialista);
 		ArrayList<Slot> slots = CitaDAO.selectSlotsSingAsignar();
-		// Get the slots with the same date and type of specialist
 		ArrayList<Slot> slotsFiltrados = new ArrayList<Slot>();
 		Date[] horas = null;
 		boolean clave = false;
+		Empleado e = null;
 
 		String dniesp = CitaDAO.selectCitaAnterior(p.get_dni(), tipoespecialista);
 		if (dniesp.isEmpty()) {
-			clave = true;
+			e=EmpleadoDAO.AsignarEmpleado(tipoespecialista);
+			clave=true;
 		}
 		// Filter the slots by the fecha and tipoespecialista
 		for (int i = 0; i < slots.size(); i++) {
 			String fechaslot = slots.get(i).getDia().toString();
 			String dnisslot = slots.get(i).getDniespc().toString();
-			if ((fechaslot.equals(fecha) && dnisslot.equals(dniesp)) || clave) {
+			if ((fechaslot.equals(fecha) && dnisslot.equals(dniesp)) || clave && fechaslot.equals(fecha) && e.get_dni().equals(dnisslot)) {
 				System.out.println(dnisslot+" "+" "+dniesp);
 				slotsFiltrados.add(slots.get(i));
 			}
