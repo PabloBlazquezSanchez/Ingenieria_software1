@@ -35,6 +35,7 @@ public class GestorCitas {
 			String fechaslot = slots.get(i).getDia().toString();
 			String dnisslot = slots.get(i).getDniespc().toString();
 			if ((fechaslot.equals(fecha) && dnisslot.equals(dniesp)) || clave) {
+				System.out.println(dnisslot+" "+" "+dniesp);
 				slotsFiltrados.add(slots.get(i));
 			}
 			// Pass slotsFiltrados to an array of strings
