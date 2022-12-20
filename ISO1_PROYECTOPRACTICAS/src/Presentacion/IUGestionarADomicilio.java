@@ -22,7 +22,7 @@ import javax.swing.border.EmptyBorder;
 import Dominio.Controladores.GestorAgenda;
 import Dominio.Entidades.TipoAgenda;
 
-public class IUGestionarAgenda extends JFrame  {
+public class IUGestionarADomicilio extends JFrame  {
 
 	private JPanel contentPane;
 
@@ -33,7 +33,7 @@ public class IUGestionarAgenda extends JFrame  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					IUGestionarAgenda frame = new IUGestionarAgenda();
+					IUGestionarADomicilio frame = new IUGestionarADomicilio();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class IUGestionarAgenda extends JFrame  {
 	 * Create the frame.
 	 * @throws SQLException 
 	 */
-	public IUGestionarAgenda() throws SQLException {
+	public IUGestionarADomicilio() throws SQLException {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {

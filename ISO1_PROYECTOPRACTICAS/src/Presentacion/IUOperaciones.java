@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import Dominio.Entidades.Paciente;
 import Persistencia.PacienteDAO;
- 
+
 public class IUOperaciones extends JFrame {
 
 	private final JPanel contentPanel = new JPanel();
@@ -31,8 +31,7 @@ public class IUOperaciones extends JFrame {
 	public static void main(String[] args) {
 		try {
 			IUOperaciones dialog = new IUOperaciones();
-			dialog.setDefaultCloseOperation
-			(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -40,7 +39,7 @@ public class IUOperaciones extends JFrame {
 	}
 
 	public IUOperaciones() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 451, 340);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.WEST);
@@ -59,59 +58,56 @@ public class IUOperaciones extends JFrame {
 		JLabel texto2 = new JLabel("Selecciona la operación que deseas realizar:");
 		texto2.setFont(new Font("Tahoma", Font.BOLD, 11));
 
-		JButton agenda = new JButton("Configurar agenda mensual");
+		JButton agenda = new JButton("Configurar agenda citas en domicilio");
 		agenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IULoginEmpleado p = new IULoginEmpleado();
+				IULoginEmpleado p = new IULoginEmpleado(true);
 				p.setVisible(true);
-				
+
+			}
+		});
+
+		JButton agenda_1 = new JButton("Configurar agenda citas en clínica");
+		agenda_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IULoginEmpleado p = new IULoginEmpleado(false);
+				p.setVisible(true);
+
 			}
 		});
 
 		JButton registro = new JButton("Registrar paciente");
-		registro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				IURegistrarPaciente p = new IURegistrarPaciente();
-				p.setVisible(true);
-
-			}
-		});
 
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
-		gl_contentPanel.setHorizontalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(51)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(registro, GroupLayout.PREFERRED_SIZE, 318, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-							.addComponent(cita, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(agenda, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 319, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(62, Short.MAX_VALUE))
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(26)
-					.addComponent(texto2, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(25, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
-					.addContainerGap(121, Short.MAX_VALUE)
-					.addComponent(titulo, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)
-					.addGap(72))
-		);
-		gl_contentPanel.setVerticalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(25)
-					.addComponent(titulo)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(texto2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(cita)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(agenda)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(registro)
-					.addContainerGap(38, Short.MAX_VALUE))
-		);
+		gl_contentPanel.setHorizontalGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPanel.createSequentialGroup().addGap(26)
+						.addComponent(texto2, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(25, Short.MAX_VALUE))
+				.addGroup(gl_contentPanel.createSequentialGroup().addContainerGap(121, Short.MAX_VALUE)
+						.addComponent(titulo, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE).addGap(72))
+				.addGroup(gl_contentPanel.createSequentialGroup().addGap(51).addGroup(gl_contentPanel
+						.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+								.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
+										.addComponent(cita, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+										.addComponent(agenda, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 319,
+												GroupLayout.PREFERRED_SIZE))
+								.addContainerGap(62, Short.MAX_VALUE))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+								.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
+										.addComponent(registro, GroupLayout.PREFERRED_SIZE, 318,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(agenda_1, GroupLayout.PREFERRED_SIZE, 319,
+												GroupLayout.PREFERRED_SIZE))
+								.addContainerGap()))));
+		gl_contentPanel.setVerticalGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPanel.createSequentialGroup().addGap(25).addComponent(titulo)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(texto2, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE).addGap(18)
+						.addComponent(cita).addPreferredGap(ComponentPlacement.UNRELATED).addComponent(agenda)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(agenda_1)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(registro)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		contentPanel.setLayout(gl_contentPanel);
 		{
 			JPanel buttonPane = new JPanel();
