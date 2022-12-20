@@ -14,36 +14,22 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import Dominio.Controladores.GestorAgenda;
+import Dominio.Controladores.GestorCitas;
+import Dominio.Entidades.Paciente;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 public class IUSeleccionarCita extends JFrame {
 	private JPanel contentPane;
-	private JTextField textFieldFecha;
 	private JTextPane textPaneEstado;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IUSeleccionarCita frame = new IUSeleccionarCita();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public IUSeleccionarCita() {
+	public IUSeleccionarCita(Paciente p) throws SQLException {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -56,11 +42,6 @@ public class IUSeleccionarCita extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		textFieldFecha = new JTextField();
-		textFieldFecha.setBounds(185, 70, 134, 28);
-		contentPane.add(textFieldFecha);
-		textFieldFecha.setColumns(10);
 
 		JButton buttonAceptar = new JButton("Aceptar");
 			
@@ -100,35 +81,58 @@ public class IUSeleccionarCita extends JFrame {
 		lblSiAunNo.setBounds(31, 31, 381, 27);
 		contentPane.add(lblSiAunNo);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Fecha (dd/mm/aaaa)");
+		JLabel lblNewLabel_1_1_1 = new JLabel("Fecha");
 		lblNewLabel_1_1_1.setBounds(27, 75, 148, 13);
 		contentPane.add(lblNewLabel_1_1_1);
 		
 		JLabel id = new JLabel("Horas diponibles");
-		id.setBounds(31, 123, 128, 16);
+		id.setBounds(31, 177, 128, 16);
 		contentPane.add(id);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setEnabled(false);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"9:00-9:10", "9:10-9:20", "9:20-9:30", "9:30-9:40", "9:40-9:50"}));
-		comboBox.setBounds(185, 121, 134, 25);
-		contentPane.add(comboBox);
+		
 		
 		
 		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setEnabled(false);
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBox.setEnabled(true);
 			}
 		});
+		
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Médico de cabecera", "Fisioterapeuta", "Podólogo"}));
-		comboBox_1.setBounds(185, 174, 134, 25);
+		comboBox_1.setBounds(185, 123, 134, 25);
 		contentPane.add(comboBox_1);
 		
 		JLabel lblEspecialidad = new JLabel("Especialidad");
-		lblEspecialidad.setBounds(31, 178, 128, 16);
+		lblEspecialidad.setBounds(31, 123, 128, 16);
 		contentPane.add(lblEspecialidad);
 		
+		JComboBox comboBox_1_1 = new JComboBox();
+		comboBox_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox_1.setEnabled(true);
+			}
+		});
+		comboBox_1_1.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
+		comboBox_1_1.setBounds(185, 73, 134, 25);
+		contentPane.add(comboBox_1_1);
+		String especialidad=null;
+		if(comboBox_1.getSelectedItem().toString().equals("Médico de cabecera")) {
+			especialidad="medicocabecera";
+		}else if (comboBox_1.getSelectedItem().toString().equals("Fisioterapeuta")){
+			especialidad="fisioterapeuta";
+		}else {
+			especialidad="podologo";
+		}
+		
+		String dia=comboBox_1_1.getSelectedItem().toString();
+		
+		comboBox.setModel(new DefaultComboBoxModel());
+		comboBox.setBounds(185, 173, 134, 25);
+		contentPane.add(comboBox);
 
 	}
 }

@@ -85,9 +85,9 @@ public class IUGestionarADomicilio extends JFrame  {
 		buttonLimpiar.setBounds(358, 117, 148, 29);
 		contentPane.add(buttonLimpiar);
 		
-		JLabel lblNewLabel = new JLabel("Configurar Agenda");
+		JLabel lblNewLabel = new JLabel("Configurar agenda (Domicilio)");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel.setBounds(224, 10, 239, 21);
+		lblNewLabel.setBounds(125, 10, 324, 21);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblSiAunNo = new JLabel("Introduzca la fecha y seleccione la hora a la que desea pasar consulta:");
@@ -95,18 +95,14 @@ public class IUGestionarADomicilio extends JFrame  {
 		lblSiAunNo.setBounds(31, 31, 432, 27);
 		contentPane.add(lblSiAunNo);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Tipo de agenda");
-		lblNewLabel_1_1_1.setBounds(27, 75, 148, 13);
-		contentPane.add(lblNewLabel_1_1_1);
-		
 		JLabel id = new JLabel("Horas diponibles");
-		id.setBounds(31, 165, 128, 16);
+		id.setBounds(31, 123, 128, 16);
 		contentPane.add(id);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setEnabled(false);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"9:00-9:10", "9:10-9:20", "9:20-9:30", "9:30-9:40", "9:40-9:50"}));
-		comboBox.setBounds(185, 161, 134, 25);
+		comboBox.setBounds(185, 117, 134, 25);
 		contentPane.add(comboBox);
 		
 		
@@ -127,24 +123,23 @@ public class IUGestionarADomicilio extends JFrame  {
 		});
 		comboBox_1.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
 
-		comboBox_1.setEnabled(false);
-		comboBox_1.setBounds(185, 119, 134, 25);
+		comboBox_1.setBounds(185, 71, 134, 25);
 		contentPane.add(comboBox_1);
 		
 		JLabel lblEspecialidad = new JLabel("Fecha");
-		lblEspecialidad.setBounds(31, 123, 128, 16);
+		lblEspecialidad.setBounds(31, 75, 128, 16);
 		contentPane.add(lblEspecialidad);
 		
-		JComboBox tipo = new JComboBox();
-		tipo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboBox_1.setEnabled(true);
+		
 
-			}
-		});
-		tipo.setModel(new DefaultComboBoxModel(TipoAgenda.values()));
-		tipo.setBounds(185, 71, 134, 25);
-		contentPane.add(tipo);
+		
+		JLabel lblAnotaciones = new JLabel("Anotaciones");
+		lblAnotaciones.setBounds(31, 160, 128, 16);
+		contentPane.add(lblAnotaciones);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(187, 161, 132, 21);
+		contentPane.add(textPane);
 		
 
 	}

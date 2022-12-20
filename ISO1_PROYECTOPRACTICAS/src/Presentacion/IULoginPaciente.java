@@ -85,7 +85,7 @@ import java.awt.Font;
 						if (GestorUsuarios.loginPaciente(textFieldLogin.getText(), textFieldPassword.getText()) ==true)
 							existe = true;
 						if (existe) {
-							IUSeleccionarCita p = new IUSeleccionarCita();
+							IUSeleccionarCita p = new IUSeleccionarCita(GestorUsuarios.ObtenerDatosPaciente(textFieldLogin.getText(), textFieldPassword.getText()));
 							p.setVisible(true);
 						} else {
 							textPaneEstado.setText("El login ha sido incorrecto");
