@@ -34,7 +34,7 @@ public class CitaDAO {
 	}
 
 	public static String selectCitaAnterior(String dnipaciente, String especialidad) throws SQLException {
-		Vector citasanteriores = GestorBaseDatos.getInstancia().select("SELECT * FROM cita WHERE dnipaciente='" + dnipaciente + "' AND tipocita=" + especialidad);
+		Vector citasanteriores = GestorBaseDatos.getInstancia().select("SELECT * FROM cita WHERE dnipaciente='" + dnipaciente + "' AND tipocita='" + especialidad+"'");
 		String dni = "";
 		for (int i = 0; i < citasanteriores.size(); i++) {
 			Vector cita = (Vector) citasanteriores.get(i);
