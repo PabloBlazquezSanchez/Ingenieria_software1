@@ -28,15 +28,16 @@ public class GestorCitas {
 
 		// Filter the slots by the fecha and tipoespecialista
 		for (int i = 0; i < slots.size(); i++) {
-			if (slots.get(i).getDia().equals(fecha)) {
+			String fechaslot = slots.get(i).getDia().toString();
+			if (fechaslot.equals(fecha)) {
+
 				// && slots.get(dni).equals(tipoespecialista)
 				slotsFiltrados.add(slots.get(i));
 			}
 			// Pass slotsFiltrados to an array of strings
-			 horas = new Date[slotsFiltrados.size()];
+			horas = new Date[slotsFiltrados.size()];
 			for (int j = 0; j < slotsFiltrados.size(); j++) {
 				horas[j] = slotsFiltrados.get(j).getHoraInicio();
-				System.out.println(horas[j]);
 			}
 		}
 		return horas;

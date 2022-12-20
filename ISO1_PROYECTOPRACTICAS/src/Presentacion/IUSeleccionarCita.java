@@ -110,8 +110,8 @@ public class IUSeleccionarCita extends JFrame {
 				try {
 					comboBox.setModel(new DefaultComboBoxModel(GestorCitas.solicitarHoras(comboBox_1_1.getSelectedItem().toString(), especialidad)));
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				e1.printStackTrace();
+				System.out.println(e1);
 				}
 
 			}
