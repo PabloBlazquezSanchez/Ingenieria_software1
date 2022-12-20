@@ -108,10 +108,11 @@ public class IUSeleccionarCita extends JFrame {
 					especialidad = "podologo";
 				}
 				try {
-					comboBox.setModel(new DefaultComboBoxModel(GestorCitas.solicitarHoras(comboBox_1_1.getSelectedItem().toString(), especialidad)));
+					comboBox.setModel(new DefaultComboBoxModel(
+							GestorCitas.solicitarHoras(comboBox_1_1.getSelectedItem().toString(), especialidad, p)));
 				} catch (SQLException e1) {
-				e1.printStackTrace();
-				System.out.println(e1);
+					e1.printStackTrace();
+					System.out.println(e1);
 				}
 
 			}
@@ -129,7 +130,7 @@ public class IUSeleccionarCita extends JFrame {
 		comboBox_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBox_1.setEnabled(true);
-				
+
 			}
 		});
 		comboBox_1_1.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));

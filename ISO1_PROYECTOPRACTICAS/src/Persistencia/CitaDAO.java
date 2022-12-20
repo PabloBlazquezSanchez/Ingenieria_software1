@@ -14,7 +14,6 @@ public class CitaDAO {
 	public static ArrayList<Slot> selectSlotsSingAsignar() throws SQLException {
 		Vector huecoslibres = GestorBaseDatos.getInstancia().select("SELECT * FROM slot WHERE TIPOSLOT='sin_asignar'");
 		ArrayList<Slot> huecos_libres = new ArrayList<Slot>();
-
 		if (huecoslibres.isEmpty()) {
 			System.out.println("Error");
 		} else {
@@ -29,14 +28,19 @@ public class CitaDAO {
 				huecos_libres.add(new Slot(inicio, fin, dia, id, dni, tiposlot));
 
 			}
-
 		}
 		return huecos_libres;
 
 	}
 
-	public Cita selectCita(Date aFecha, Especialista aEspAsignado, Paciente aPaciente) {
-		throw new UnsupportedOperationException();
+	public static String selectCitaAnterior(String dnipaciente, String especialidad) throws SQLException {
+		Vector citasanteriores = GestorBaseDatos.getInstancia().select("SELECT * FROM cita WHERE dnipaciente='" + dnipaciente + "' AND tipocita=" + especialidad);
+		String dni = "";
+		for (int i = 0; i < citasanteriores.size(); i++) {
+			Vector cita = (Vector) citasanteriores.get(i);
+			dni = (String) cita.get(1);
+		}
+		return dni;
 	}
 
 	public int nuevaCita(Cita aC) {

@@ -15,23 +15,26 @@ public class GestorCitas {
 	public CitaDAO citaDAO;
 
 	public void solicitarCita(Date fecha, Paciente p, Especialista especialista) {
-
 	}
 
-	public static Date[] solicitarHoras(String fecha, String tipoespecialista) throws SQLException {
+	public static Date[] solicitarHoras(String fecha, String tipoespecialista, Paciente p) throws SQLException {
 		System.out.println(fecha + " " + tipoespecialista);
 		System.out.println(fecha + " " + tipoespecialista);
 		ArrayList<Slot> slots = CitaDAO.selectSlotsSingAsignar();
 		// Get the slots with the same date and type of specialist
 		ArrayList<Slot> slotsFiltrados = new ArrayList<Slot>();
 		Date[] horas = null;
+		boolean clave = false;
 
+		String dniesp = CitaDAO.selectCitaAnterior(p.get_dni(), tipoespecialista);
+		if (dniesp.isEmpty()) {
+			clave = true;
+		}
 		// Filter the slots by the fecha and tipoespecialista
 		for (int i = 0; i < slots.size(); i++) {
 			String fechaslot = slots.get(i).getDia().toString();
-			if (fechaslot.equals(fecha)) {
-
-				// && slots.get(dni).equals(tipoespecialista)
+			String dnisslot = slots.get(i).getDniespc().toString();
+			if ((fechaslot.equals(fecha) && dnisslot.equals(dniesp)) || clave) {
 				slotsFiltrados.add(slots.get(i));
 			}
 			// Pass slotsFiltrados to an array of strings
@@ -45,9 +48,10 @@ public class GestorCitas {
 	}
 
 	public void anularCita(Paciente aPaciente, Cita aCita) { // No entra en los casos de uso seleccionados.
+		throw new UnsupportedOperationException();
 	}
 
-	public ArrayList<Cita> leerCitas() {
+	public ArrayList<Cita> leerCitas() { // No entra en los casos de uso seleccionados.
 		throw new UnsupportedOperationException();
 	}
 }
