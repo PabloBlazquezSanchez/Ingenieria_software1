@@ -27,6 +27,8 @@ import java.sql.SQLException;
 public class IUSeleccionarCita extends JFrame {
 	private JPanel contentPane;
 	private JTextPane textPaneEstado;
+	static boolean pulsar=false;
+	static String finalespecialidad;
 
 	public IUSeleccionarCita(Paciente p) throws SQLException {
 		String dia = null;
@@ -45,6 +47,7 @@ public class IUSeleccionarCita extends JFrame {
 		contentPane.setLayout(null);
 
 		JButton buttonAceptar = new JButton("Aceptar");
+		
 
 		buttonAceptar.setBounds(358, 69, 148, 29);
 		contentPane.add(buttonAceptar);
@@ -90,26 +93,32 @@ public class IUSeleccionarCita extends JFrame {
 		id.setBounds(31, 177, 128, 16);
 		contentPane.add(id);
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setEnabled(false);
-
-		JComboBox comboBox_1 = new JComboBox();
-		JComboBox comboBox_1_1 = new JComboBox();
-		comboBox_1.setEnabled(false);
-		comboBox_1.addActionListener(new ActionListener() {
+		JComboBox horasdisponibles = new JComboBox();
+		horasdisponibles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(true);
+				pulsar=true;
+			}
+		});
+		horasdisponibles.setEnabled(false);
+
+		JComboBox especialidad3 = new JComboBox();
+		JComboBox fecha = new JComboBox();
+		especialidad3.setEnabled(false);
+		especialidad3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				horasdisponibles.setEnabled(true);
 				String especialidad = null;
-				if (comboBox_1.getSelectedItem().toString().equals("Médico de cabecera")) {
+				if (especialidad3.getSelectedItem().toString().equals("Médico de cabecera")) {
 					especialidad = "MEDICO_CABECERA";
-				} else if (comboBox_1.getSelectedItem().toString().equals("Fisioterapeuta")) {
+				} else if (especialidad3.getSelectedItem().toString().equals("Fisioterapeuta")) {
 					especialidad = "fisioterapeuta";
 				} else {
 					especialidad = "podologo";
 				}
 				try {
-					comboBox.setModel(new DefaultComboBoxModel(
-							GestorCitas.solicitarHoras(comboBox_1_1.getSelectedItem().toString(), especialidad, p)));
+					finalespecialidad=especialidad;
+					horasdisponibles.setModel(new DefaultComboBoxModel(
+							GestorCitas.solicitarHoras(fecha.getSelectedItem().toString(), especialidad, p)));
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 					System.out.println(e1);
@@ -118,27 +127,40 @@ public class IUSeleccionarCita extends JFrame {
 			}
 		});
 
-		comboBox_1.setModel(
+		especialidad3.setModel(
 				new DefaultComboBoxModel(new String[] { "Médico de cabecera", "Fisioterapeuta", "Podólogo" }));
-		comboBox_1.setBounds(185, 123, 134, 25);
-		contentPane.add(comboBox_1);
+		especialidad3.setBounds(185, 123, 134, 25);
+		contentPane.add(especialidad3);
 
 		JLabel lblEspecialidad = new JLabel("Especialidad");
 		lblEspecialidad.setBounds(31, 123, 128, 16);
 		contentPane.add(lblEspecialidad);
 
-		comboBox_1_1.addActionListener(new ActionListener() {
+		fecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox_1.setEnabled(true);
-
+				especialidad3.setEnabled(true);
+				horasdisponibles.setEnabled(false);
+				horasdisponibles.setModel(new DefaultComboBoxModel());
+				
 			}
 		});
-		comboBox_1_1.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
-		comboBox_1_1.setBounds(185, 73, 134, 25);
-		contentPane.add(comboBox_1_1);
+		fecha.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
+		fecha.setBounds(185, 73, 134, 25);
+		contentPane.add(fecha);
 
-		comboBox.setBounds(185, 173, 134, 25);
-		contentPane.add(comboBox);
+		horasdisponibles.setBounds(185, 173, 134, 25);
+		contentPane.add(horasdisponibles);
+		
+		buttonAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					try {
+						GestorCitas.generarCita(fecha.getSelectedItem().toString(), finalespecialidad, p, horasdisponibles.getSelectedItem().toString());
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+			
+			}
+		});
 
 	}
 }
