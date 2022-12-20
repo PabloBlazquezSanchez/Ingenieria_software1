@@ -34,11 +34,17 @@ public class CitaDAO {
 	}
 
 	public static String selectCitaAnterior(String dnipaciente, String especialidad) throws SQLException {
-		Vector citasanteriores = GestorBaseDatos.getInstancia().select("SELECT * FROM cita WHERE dnipaciente='" + dnipaciente + "' AND tipocita='" + especialidad+"'");
+		Vector citasanteriores = GestorBaseDatos.getInstancia()
+				.select("SELECT * FROM cita WHERE DNIPACIENTE='" + dnipaciente+"'");
 		String dni = "";
+		System.out.println(citasanteriores.size());
 		for (int i = 0; i < citasanteriores.size(); i++) {
+
 			Vector cita = (Vector) citasanteriores.get(i);
-			dni = (String) cita.get(1);
+			if (cita.get(3).toString().equals(especialidad)) {
+				dni = (String) cita.get(2);
+				System.out.println(dni + "  e");
+			}
 		}
 		return dni;
 	}
