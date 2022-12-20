@@ -24,7 +24,6 @@ import javax.swing.JList;
 
 	public class IUGestionarAClinica extends JFrame {
 		private JPanel contentPane;
-		private JTextField textFieldFecha;
 		private JTextPane textPaneEstado;
 		private JTextField textField;
 		private JTextField textField_1;
@@ -55,11 +54,6 @@ import javax.swing.JList;
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			setContentPane(contentPane);
 			contentPane.setLayout(null);
-
-			textFieldFecha = new JTextField();
-			textFieldFecha.setBounds(185, 70, 134, 28);
-			contentPane.add(textFieldFecha);
-			textFieldFecha.setColumns(10);
 
 			JButton buttonAceptar = new JButton("Aceptar");
 
@@ -92,7 +86,7 @@ import javax.swing.JList;
 			buttonLimpiar.setBounds(358, 117, 148, 29);
 			contentPane.add(buttonLimpiar);
 			
-			JLabel lblNewLabel = new JLabel("Añadir horas de consulta en la clínica");
+			JLabel lblNewLabel = new JLabel("clínica");
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 			lblNewLabel.setBounds(112, 10, 394, 21);
 			contentPane.add(lblNewLabel);
@@ -101,10 +95,6 @@ import javax.swing.JList;
 			texto.setFont(new Font("Tahoma", Font.BOLD, 11));
 			texto.setBounds(79, 33, 381, 27);
 			contentPane.add(texto);
-			
-			JLabel fecha = new JLabel("Fecha (dd/mm/aaaa)");
-			fecha.setBounds(27, 75, 148, 13);
-			contentPane.add(fecha);
 			
 			textField = new JTextField();
 			textField.setColumns(10);
