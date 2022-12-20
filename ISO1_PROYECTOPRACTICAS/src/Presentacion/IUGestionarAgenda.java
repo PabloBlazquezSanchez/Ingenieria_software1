@@ -22,7 +22,7 @@ import javax.swing.border.EmptyBorder;
 import Dominio.Controladores.GestorAgenda;
 import Dominio.Entidades.TipoAgenda;
 
-public class IUGestionarAgenda extends JFrame {
+public class IUGestionarAgenda extends JFrame  {
 
 	private JPanel contentPane;
 
@@ -85,14 +85,14 @@ public class IUGestionarAgenda extends JFrame {
 		buttonLimpiar.setBounds(358, 117, 148, 29);
 		contentPane.add(buttonLimpiar);
 		
-		JLabel lblNewLabel = new JLabel("Seleccionar cita");
+		JLabel lblNewLabel = new JLabel("Configurar Agenda");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel.setBounds(224, 10, 239, 21);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblSiAunNo = new JLabel("Introduzca la fecha y seleccione la hora y especialidad:");
+		JLabel lblSiAunNo = new JLabel("Introduzca la fecha y seleccione la hora a la que desea pasar consulta:");
 		lblSiAunNo.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblSiAunNo.setBounds(31, 31, 381, 27);
+		lblSiAunNo.setBounds(31, 31, 432, 27);
 		contentPane.add(lblSiAunNo);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Tipo de agenda");
@@ -114,9 +114,19 @@ public class IUGestionarAgenda extends JFrame {
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBox.setEnabled(true);
+				try {
+					System.out.println(comboBox_1.getSelectedItem().toString());
+
+					GestorAgenda.obtenerDatosHorariosDia(comboBox_1.getSelectedItem().toString());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		comboBox_1.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
+
 		comboBox_1.setEnabled(false);
 		comboBox_1.setBounds(185, 119, 134, 25);
 		contentPane.add(comboBox_1);

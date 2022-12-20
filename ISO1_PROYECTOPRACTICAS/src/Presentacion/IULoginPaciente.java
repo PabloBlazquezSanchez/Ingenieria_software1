@@ -150,11 +150,5 @@ import java.awt.Font;
 			id.setBounds(31, 123, 63, 13);
 			contentPane.add(id);
 
-			/*
-			 * JScrollPane scrollPaneSalida = new JScrollPane(); scrollPaneSalida.
-			 * setToolTipText("Este panel mostrar\u00E1 el resultado de la consulta, las excepciones o cualquier otro resultado"
-			 * ); scrollPaneSalida.setBounds(6, 193, 407, 108); scrollPaneSalida.
-			 * contentPane.add(scrollPaneSalida);
-			 */
 		}
 	}
