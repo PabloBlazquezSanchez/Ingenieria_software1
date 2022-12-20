@@ -28,12 +28,13 @@ public class IUSeleccionarCita extends JFrame {
 	private JPanel contentPane;
 	private JTextPane textPaneEstado;
 
-
 	public IUSeleccionarCita(Paciente p) throws SQLException {
+		String dia = null;
+		String especialidad = null;
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
-				
+
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,7 +45,7 @@ public class IUSeleccionarCita extends JFrame {
 		contentPane.setLayout(null);
 
 		JButton buttonAceptar = new JButton("Aceptar");
-			
+
 		buttonAceptar.setBounds(358, 69, 148, 29);
 		contentPane.add(buttonAceptar);
 
@@ -70,67 +71,71 @@ public class IUSeleccionarCita extends JFrame {
 		});
 		buttonLimpiar.setBounds(358, 117, 148, 29);
 		contentPane.add(buttonLimpiar);
-		
+
 		JLabel lblNewLabel = new JLabel("Seleccionar cita");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel.setBounds(224, 10, 239, 21);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblSiAunNo = new JLabel("Introduzca la fecha y seleccione la hora y especialidad:");
 		lblSiAunNo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblSiAunNo.setBounds(31, 31, 381, 27);
 		contentPane.add(lblSiAunNo);
-		
+
 		JLabel lblNewLabel_1_1_1 = new JLabel("Fecha");
 		lblNewLabel_1_1_1.setBounds(27, 75, 148, 13);
 		contentPane.add(lblNewLabel_1_1_1);
-		
+
 		JLabel id = new JLabel("Horas diponibles");
 		id.setBounds(31, 177, 128, 16);
 		contentPane.add(id);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setEnabled(false);
-		
-		
-		
+
 		JComboBox comboBox_1 = new JComboBox();
+		JComboBox comboBox_1_1 = new JComboBox();
 		comboBox_1.setEnabled(false);
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBox.setEnabled(true);
+				String especialidad = null;
+				if (comboBox_1.getSelectedItem().toString().equals("Médico de cabecera")) {
+					especialidad = "medicocabecera";
+				} else if (comboBox_1.getSelectedItem().toString().equals("Fisioterapeuta")) {
+					especialidad = "fisioterapeuta";
+				} else {
+					especialidad = "podologo";
+				}
+				try {
+					comboBox.setModel(new DefaultComboBoxModel(GestorCitas.solicitarHoras(comboBox_1_1.getSelectedItem().toString(), especialidad)));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 			}
 		});
-		
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Médico de cabecera", "Fisioterapeuta", "Podólogo"}));
+
+		comboBox_1.setModel(
+				new DefaultComboBoxModel(new String[] { "Médico de cabecera", "Fisioterapeuta", "Podólogo" }));
 		comboBox_1.setBounds(185, 123, 134, 25);
 		contentPane.add(comboBox_1);
-		
+
 		JLabel lblEspecialidad = new JLabel("Especialidad");
 		lblEspecialidad.setBounds(31, 123, 128, 16);
 		contentPane.add(lblEspecialidad);
-		
-		JComboBox comboBox_1_1 = new JComboBox();
+
 		comboBox_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBox_1.setEnabled(true);
+				
 			}
 		});
 		comboBox_1_1.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
 		comboBox_1_1.setBounds(185, 73, 134, 25);
 		contentPane.add(comboBox_1_1);
-		String especialidad=null;
-		if(comboBox_1.getSelectedItem().toString().equals("Médico de cabecera")) {
-			especialidad="medicocabecera";
-		}else if (comboBox_1.getSelectedItem().toString().equals("Fisioterapeuta")){
-			especialidad="fisioterapeuta";
-		}else {
-			especialidad="podologo";
-		}
-		
-		String dia=comboBox_1_1.getSelectedItem().toString();
-		
-		comboBox.setModel(new DefaultComboBoxModel());
+
 		comboBox.setBounds(185, 173, 134, 25);
 		contentPane.add(comboBox);
 
