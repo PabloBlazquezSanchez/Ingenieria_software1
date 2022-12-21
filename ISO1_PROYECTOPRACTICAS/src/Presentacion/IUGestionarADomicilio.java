@@ -106,14 +106,14 @@ public class IUGestionarADomicilio extends JFrame  {
 		contentPane.add(comboBox);
 		
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.addActionListener(new ActionListener() {
+		JComboBox fecha = new JComboBox();
+		fecha.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
+		fecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBox.setEnabled(true);
 				try {
-					System.out.println(comboBox_1.getSelectedItem().toString());
-
-					GestorAgenda.obtenerDatosHorariosDia(comboBox_1.getSelectedItem().toString());
+					System.out.println(fecha.getSelectedItem().toString());
+					GestorAgenda.obtenerDatosHorariosDia(fecha.getSelectedItem().toString());
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -121,10 +121,10 @@ public class IUGestionarADomicilio extends JFrame  {
 				
 			}
 		});
-		comboBox_1.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
+		fecha.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
 
-		comboBox_1.setBounds(185, 71, 134, 25);
-		contentPane.add(comboBox_1);
+		fecha.setBounds(185, 71, 134, 25);
+		contentPane.add(fecha);
 		
 		JLabel lblEspecialidad = new JLabel("Fecha");
 		lblEspecialidad.setBounds(31, 75, 128, 16);

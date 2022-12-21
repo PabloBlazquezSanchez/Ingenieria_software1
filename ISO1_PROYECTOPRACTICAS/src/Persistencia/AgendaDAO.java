@@ -1,6 +1,6 @@
 package Persistencia;
 
-import VistaEstatica.Dominio.Entidades.Agenda;
+import Dominio.Entidades.Agenda;
 
 public class AgendaDAO {
 

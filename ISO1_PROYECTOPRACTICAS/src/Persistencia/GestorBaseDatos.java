@@ -11,14 +11,14 @@ import java.util.Vector;
 import org.apache.derby.jdbc.EmbeddedDriver;
 
 public class GestorBaseDatos {
-	
+
 	private static GestorBaseDatos instancia = null;
 	protected static Connection mBD;
 
 	public GestorBaseDatos() throws SQLException {
-		conectarBD();		
+		conectarBD();
 	}
-	
+
 	public static GestorBaseDatos getInstancia() throws SQLException {
 		if (instancia == null) {
 			instancia = new GestorBaseDatos();
@@ -47,10 +47,10 @@ public class GestorBaseDatos {
 		Statement stmt = mBD.createStatement();
 		ResultSet res = stmt.executeQuery(sql);
 		int nColumnas = res.getMetaData().getColumnCount();
-		
+
 		while (res.next()) {
 			Vector<Object> v = new Vector<Object>();
-			for (int i=1; i<nColumnas+1; i++)
+			for (int i = 1; i < nColumnas + 1; i++)
 				v.add(res.getObject(i));
 			vectoradevolver.add(v);
 		}
@@ -64,31 +64,31 @@ public class GestorBaseDatos {
 	}
 
 	public int update(String sql) throws SQLException {
-		return executeInsertUpdateDelete(sql);	
+		return executeInsertUpdateDelete(sql);
 	}
 
 	public int delete(String sql) throws SQLException {
 		return executeInsertUpdateDelete(sql);
 	}
-	
+
 	public int executeInsertUpdateDelete(String sql) throws SQLException {
 		System.out.println(sql);
 		PreparedStatement stmt = mBD.prepareStatement(sql);
-    	int res=stmt.executeUpdate();
-    	stmt.close();
-    	desconectarBD();
-		return res;  
+		int res = stmt.executeUpdate();
+		stmt.close();
+		desconectarBD();
+		return res;
 	}
-
 
 	public static void crearBaseDeDatos() throws Exception {
 		try {
-		    Connection connection = DriverManager.getConnection(BDConstantes.CONNECTION_STRING, BDConstantes.DBUSER, BDConstantes.DBPASS);
-		    System.out.println("New derby database created");
+			Connection connection = DriverManager.getConnection(BDConstantes.CONNECTION_STRING, BDConstantes.DBUSER,
+					BDConstantes.DBPASS);
+			System.out.println("New derby database created");
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
