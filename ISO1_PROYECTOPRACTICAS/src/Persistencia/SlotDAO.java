@@ -11,7 +11,7 @@ import Dominio.Entidades.Slot;
 
 public class SlotDAO {
 	public static ArrayList<Slot> selectSlotsSingAsignar() throws SQLException {
-		Vector huecoslibres = GestorBaseDatos.getInstancia().select("SELECT * FROM slot WHERE TIPOSLOT='clinica'AND DNIESPECIALISTA='FALSE'");
+		Vector huecoslibres = GestorBaseDatos.getInstancia().select("SELECT * FROM slot WHERE TIPOSLOT='clinica'");
 		ArrayList<Slot> huecos_libres = new ArrayList<Slot>();
 		if (huecoslibres.isEmpty()) {
 			System.out.println("Error");
@@ -24,8 +24,7 @@ public class SlotDAO {
 				String dni = (String) huecoindividual.get(3);
 				String tiposlot = (String) huecoindividual.get(4);
 				int id = (Integer) huecoindividual.get(5);
-				boolean ocupado= (boolean) huecoindividual.get(6);
-				huecos_libres.add(new Slot(inicio, fin, dia, id, dni, tiposlot, ocupado));
+				huecos_libres.add(new Slot(inicio, fin, dia, id, dni, tiposlot));
 			}
 		}
 		return huecos_libres;
