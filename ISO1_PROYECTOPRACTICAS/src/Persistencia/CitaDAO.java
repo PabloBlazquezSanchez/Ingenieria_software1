@@ -9,11 +9,30 @@ import Dominio.Entidades.Cita;
 import Dominio.Entidades.Especialista;
 import Dominio.Entidades.Paciente;
 import Dominio.Entidades.Slot;
-import persistencia.GestorBD;
 
 public class CitaDAO {
+	public static ArrayList<Slot> selectSlotsSingAsignar() throws SQLException {
+		Vector huecoslibres = GestorBaseDatos.getInstancia().select("SELECT * FROM slot WHERE TIPOSLOT='sin_asignar'");
+		ArrayList<Slot> huecos_libres = new ArrayList<Slot>();
+		if (huecoslibres.isEmpty()) {
+			System.out.println("Error");
+		} else {
+			for (int i = 0; i < huecoslibres.size(); i++) {
+				Vector huecoindividual = (Vector) huecoslibres.get(i);
+				Date inicio = (Date) huecoindividual.get(0);
+				Date fin = (Date) huecoindividual.get(1);
+				Date dia = (Date) huecoindividual.get(2);
+				String dni = (String) huecoindividual.get(3);
+				String tiposlot = (String) huecoindividual.get(4);
+				int id = (Integer) huecoindividual.get(5);
+				huecos_libres.add(new Slot(inicio, fin, dia, id, dni, tiposlot));
 
-	
+			}
+		}
+		return huecos_libres;
+
+	}
+
 	public static String selectCitaAnterior(String dnipaciente, String especialidad) throws SQLException {
 		Vector citasanteriores = GestorBaseDatos.getInstancia()
 				.select("SELECT * FROM cita WHERE DNIPACIENTE='" + dnipaciente+"'");
@@ -29,6 +48,10 @@ public class CitaDAO {
 		return dni;
 	}
 
+	public int nuevaCita(Cita aC) {
+		throw new UnsupportedOperationException();
+	}
+
 	public static int nuevaCita(String dnipac, String dniesp, String especialidad, int id) throws SQLException {
 		return GestorBaseDatos.getInstancia().insert("INSERT INTO cita (DNIPACIENTE, DNITRABAJADOR, TIPOCITA, IDSLOT) VALUES ('"
 				+ dnipac+"', '"
@@ -36,7 +59,5 @@ public class CitaDAO {
 				+ especialidad+"', "
 				+ id+"')");
 		
-
-	
 	}
 }
