@@ -11,17 +11,30 @@ public class Slot {
 	private Date dia;
 	private String tipoSlot;
 	private String dniespc;
+	private boolean ocupado;
 	
 	
-	public Slot(Date horaInicio, Date horaFin, Date dia, int id,String dniespc, String tipoSlot) {
+	public Slot(Date horaInicio, Date horaFin, Date dia, int id,String dniespc, String tipoSlot, boolean ocupado) {
 		this.horaInicio = horaInicio;
 		this.horaFin = horaFin;
 		this.id = id;
 		this.dia = dia;
 		this.tipoSlot = tipoSlot;
 		this.dniespc = dniespc;
+		this.ocupado=ocupado;
 	}
 	
+	
+	public boolean getOcupado() {
+		return ocupado;
+	}
+
+
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
+	}
+
+
 	public Date getHoraInicio() {
 		return horaInicio;
 	}
