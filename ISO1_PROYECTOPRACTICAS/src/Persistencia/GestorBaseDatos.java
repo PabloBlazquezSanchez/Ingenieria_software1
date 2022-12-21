@@ -70,7 +70,7 @@ public class GestorBaseDatos {
 	public int delete(String sql) throws SQLException {
 		return executeInsertUpdateDelete(sql);
 	}
-
+	
 	public int executeInsertUpdateDelete(String sql) throws SQLException {
 		System.out.println(sql);
 		PreparedStatement stmt = mBD.prepareStatement(sql);

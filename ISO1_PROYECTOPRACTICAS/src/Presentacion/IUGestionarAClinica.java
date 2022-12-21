@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 
 import Dominio.Controladores.GestorAgenda;
 import Dominio.Controladores.GestorCitas;
+import Dominio.Entidades.Agenda;
 import Dominio.Entidades.Empleado;
 import Dominio.Entidades.TipoAgenda;
 
@@ -28,7 +29,7 @@ public class IUGestionarAClinica extends JFrame {
 
 	private JPanel contentPane;
 
-	public IUGestionarAClinica(Empleado e) throws SQLException {
+	public IUGestionarAClinica(Empleado e1) throws SQLException {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -42,10 +43,9 @@ public class IUGestionarAClinica extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JButton buttonAceptar = new JButton("Aceptar");
+		JComboBox horas = new JComboBox();
 
-		buttonAceptar.setBounds(358, 69, 148, 29);
-		contentPane.add(buttonAceptar);
+
 
 		JLabel lblEstado = new JLabel("Estado");
 		lblEstado.setForeground(Color.RED);
@@ -81,11 +81,7 @@ public class IUGestionarAClinica extends JFrame {
 		texto_h.setBounds(31, 123, 128, 16);
 		contentPane.add(texto_h);
 
-		JComboBox horas = new JComboBox();
-		horas.setEnabled(false);
-		horas.setModel(new DefaultComboBoxModel());
-		horas.setBounds(185, 117, 134, 25);
-		contentPane.add(horas);
+		
 
 		JComboBox fecha = new JComboBox();
 		fecha.addActionListener(new ActionListener() {
@@ -111,6 +107,31 @@ public class IUGestionarAClinica extends JFrame {
 		JLabel texto_f = new JLabel("Fecha");
 		texto_f.setBounds(31, 75, 128, 16);
 		contentPane.add(texto_f);
-
+		
+		JButton buttonAceptar = new JButton("Aceptar");
+		buttonAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					GestorAgenda.rellenarAgenda(e1, horas.getSelectedItem().toString(), fecha.getSelectedItem().toString());
+					buttonAceptar.setEnabled(false);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		buttonAceptar.setBounds(358, 69, 148, 29);
+		contentPane.add(buttonAceptar);
+		horas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonAceptar.setEnabled(true);
+			}
+		});
+		horas.setEnabled(false);
+		horas.setModel(new DefaultComboBoxModel());
+		horas.setBounds(185, 117, 134, 25);
+		contentPane.add(horas);
 	}
+	
+	
 }

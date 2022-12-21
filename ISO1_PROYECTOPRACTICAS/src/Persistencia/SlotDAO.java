@@ -31,9 +31,9 @@ public class SlotDAO {
 		return huecos_libres;
 	}
 
-	public static int obtenerID(String dniespecialista, String inicio, String dia) throws SQLException {
+	public static int obtenerID(String dniespecialista, String inicio, String dia, String tipo) throws SQLException {
 		Vector<Object> id_slot = GestorBaseDatos.getInstancia()
-				.select("SELECT id FROM slot WHERE TIPOSLOT='clinica' AND DNIESPECIALISTA='" + dniespecialista
+				.select("SELECT id FROM slot WHERE TIPOSLOT='"+tipo+"' AND DNIESPECIALISTA='" + dniespecialista
 						+ "' AND INICIO='" + inicio + "' AND DIA='" + dia + "'");
 		Vector huecoindividual = (Vector) id_slot.get(0);
 		int id = (int) huecoindividual.get(0);
@@ -45,6 +45,10 @@ public class SlotDAO {
 		return GestorBaseDatos.getInstancia().update("UPDATE slot SET OCUPADO='true' WHERE ID=" + id + "") + 1;
 	}
 
+	public static int configurado(int id, String tipo) throws SQLException {
+		return GestorBaseDatos.getInstancia().update("UPDATE slot SET OCUPADO='true', TIPOSLOT='"+tipo+"' WHERE ID=" + id + "") + 1;
+	}
+	
 	public static ArrayList<Slot> selectSinAsignar(String fecha) throws SQLException {
 		Vector huecoslibres = GestorBaseDatos.getInstancia().select("SELECT * FROM slot WHERE TIPOSLOT='sin_asignar' AND OCUPADO='false' AND DIA='"+fecha+"'");
 		ArrayList<Slot> huecos_libres = new ArrayList<Slot>();

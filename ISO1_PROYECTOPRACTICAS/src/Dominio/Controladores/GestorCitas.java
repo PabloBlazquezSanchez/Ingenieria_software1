@@ -83,7 +83,7 @@ public class GestorCitas {
 			e = EmpleadoDAO.AsignarEmpleado(especialidad);
 			dniesp = e.get_dni();
 		}
-		int id = SlotDAO.obtenerID(dniesp, inicio, fecha);
+		int id = SlotDAO.obtenerID(dniesp, inicio, fecha, "clinica");
 		int resultado = 0;
 		resultado = +CitaDAO.nuevaCita(p.get_dni(), dniesp, especialidad, id);
 		System.out.println(resultado);

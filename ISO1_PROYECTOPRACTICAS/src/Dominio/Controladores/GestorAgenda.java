@@ -2,7 +2,9 @@ package Dominio.Controladores;
 
 import Dominio.Entidades.Horario;
 import Dominio.Entidades.Calendario;
+import Dominio.Entidades.Empleado;
 
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,7 +12,9 @@ import java.util.Date;
 import Dominio.Entidades.Agenda;
 import Dominio.Entidades.Slot;
 import Persistencia.CalendarioDAO;
+import Persistencia.CitaDAO;
 import Persistencia.HorarioDAO;
+import Persistencia.SlotDAO;
 
 public class GestorAgenda {
 
@@ -26,23 +30,25 @@ public class GestorAgenda {
 	
 	public static void obtenerDatosHorariosDia(String fechatext) throws SQLException {
 		Horario h = HorarioDAO.selectHorario(fechatext);
-		
+	
 	}
+
 
 	public void obtenerDatosCalendarios(Calendario aCalendarios) {
-		
 
-	}
-
-	public void solicitarValidacion() {
-		throw new UnsupportedOperationException();
 	}
 
 	public Agenda crearAgenda(Slot aSlot, Horario aHorarios, Calendario aCalendario) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void rellenarAgenda(Agenda aAgenda) {
-		throw new UnsupportedOperationException();
+	public static int rellenarAgenda(Empleado e, String dia, String fecha) throws SQLException {
+		int id = SlotDAO.obtenerID("sin_asignar", dia, fecha, "sin_asignar");
+		int resultado = 0;
+		System.out.println(resultado);
+		resultado = +SlotDAO.configurado(id,"clinica");
+		
+		System.out.println(resultado);
+		return resultado;
 	}
 }
