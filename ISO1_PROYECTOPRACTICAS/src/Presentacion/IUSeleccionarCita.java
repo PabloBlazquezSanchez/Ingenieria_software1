@@ -159,9 +159,9 @@ public class IUSeleccionarCita extends JFrame {
 							horasdisponibles.getSelectedItem().toString());
 					System.out.println(resultado);
 					if (resultado == 2) {
-						textPaneEstado.setText("Se ha creado la cita correctmente.");
+						textPaneEstado.setText("Se ha creado la cita correctamente.");
 					} else {
-						textPaneEstado.setText("No se ha creado la cita correctmente.");
+						textPaneEstado.setText("No se ha creado la cita correctamente.");
 					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();

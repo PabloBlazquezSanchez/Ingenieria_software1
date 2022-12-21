@@ -112,7 +112,15 @@ public class IUGestionarAClinica extends JFrame {
 		buttonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					GestorAgenda.rellenarAgenda(e1, horas.getSelectedItem().toString(), fecha.getSelectedItem().toString());
+					int resultado=GestorAgenda.rellenarAgenda(e1, horas.getSelectedItem().toString(), fecha.getSelectedItem().toString());
+					
+					System.out.println(resultado);
+					if (resultado == 2) {
+						textPaneEstado.setText("Se ha configurado la agenda correctamente.");
+					} else {
+						textPaneEstado.setText("No se ha creado la agenda correctamente.");
+					}
+					
 					buttonAceptar.setEnabled(false);
 					horas.setEnabled(false);
 				} catch (SQLException e1) {
