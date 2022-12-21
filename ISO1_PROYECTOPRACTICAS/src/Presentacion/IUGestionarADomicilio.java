@@ -23,102 +23,135 @@ import Dominio.Controladores.GestorAgenda;
 import Dominio.Controladores.GestorCitas;
 import Dominio.Entidades.Empleado;
 import Dominio.Entidades.TipoAgenda;
+import javax.swing.JPasswordField;
 
 public class IUGestionarADomicilio extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textAnotaciones;
 
 
-	public IUGestionarADomicilio(Empleado e) throws SQLException {
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowOpened(WindowEvent e) {
+	public IUGestionarADomicilio(Empleado e1) throws SQLException {
+			addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowOpened(WindowEvent e) {
 
-			}
-		});
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 576, 384);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-
-		JButton buttonAceptar = new JButton("Aceptar");
-
-		buttonAceptar.setBounds(358, 69, 148, 29);
-		contentPane.add(buttonAceptar);
-
-		JLabel lblEstado = new JLabel("Estado");
-		lblEstado.setForeground(Color.RED);
-		lblEstado.setBounds(6, 208, 61, 16);
-		contentPane.add(lblEstado);
-
-		JTextPane textPaneEstado = new JTextPane();
-		textPaneEstado.setToolTipText(
-				"Panel para mostrar el restultado de la comprobaci�n de login o las excepciones lanzadas");
-		textPaneEstado.setEditable(false);
-		textPaneEstado.setBounds(16, 235, 529, 102);
-		contentPane.add(textPaneEstado);
-		JButton buttonLimpiar = new JButton("Limpiar");
-		buttonLimpiar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				textPaneEstado.setText("");
-			}
-		});
-		buttonLimpiar.setBounds(358, 117, 148, 29);
-		contentPane.add(buttonLimpiar);
-
-		JLabel lblNewLabel = new JLabel("Configurar agenda (Domicilio)");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel.setBounds(125, 10, 324, 21);
-		contentPane.add(lblNewLabel);
-
-		JLabel lblSiAunNo = new JLabel("Introduzca la fecha y seleccione la hora a la que desea pasar consulta:");
-		lblSiAunNo.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblSiAunNo.setBounds(31, 31, 432, 27);
-		contentPane.add(lblSiAunNo);
-
-		JLabel texto_h = new JLabel("Horas diponibles");
-		texto_h.setBounds(31, 123, 128, 16);
-		contentPane.add(texto_h);
-
-		JComboBox horas = new JComboBox();
-		horas.setEnabled(false);
-		horas.setModel(new DefaultComboBoxModel());
-		horas.setBounds(185, 117, 134, 25);
-		contentPane.add(horas);
-
-		JComboBox fecha = new JComboBox();
-		fecha.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					System.out.println(fecha.getSelectedItem().toString());
-					horas.setModel(new DefaultComboBoxModel(GestorCitas.huecossinasignar(fecha.getSelectedItem().toString())));
-					horas.setEnabled(true);
-
-				} catch (SQLException e1) {
-					e1.printStackTrace();
 				}
+			});
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setBounds(100, 100, 576, 384);
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setContentPane(contentPane);
+			contentPane.setLayout(null);
 
-			}
-		});
+			JComboBox horas = new JComboBox();
 
-		fecha.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
 
-		fecha.setBounds(185, 71, 134, 25);
-		contentPane.add(fecha);
 
-		JLabel texto_f = new JLabel("Fecha");
-		texto_f.setBounds(31, 75, 128, 16);
-		contentPane.add(texto_f);
+			JLabel lblEstado = new JLabel("Estado");
+			lblEstado.setForeground(Color.RED);
+			lblEstado.setBounds(6, 208, 61, 16);
+			contentPane.add(lblEstado);
 
-		JLabel lblAnotaciones = new JLabel("Anotaciones");
-		lblAnotaciones.setBounds(31, 160, 128, 16);
-		contentPane.add(lblAnotaciones);
+			JTextPane textPaneEstado = new JTextPane();
+			textPaneEstado.setToolTipText(
+					"Panel para mostrar el restultado de la comprobaci�n de login o las excepciones lanzadas");
+			textPaneEstado.setEditable(false);
+			textPaneEstado.setBounds(16, 235, 529, 102);
+			contentPane.add(textPaneEstado);
+			JButton buttonLimpiar = new JButton("Limpiar");
+			buttonLimpiar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					textPaneEstado.setText("");
+				}
+			});
+			buttonLimpiar.setBounds(358, 117, 148, 29);
+			contentPane.add(buttonLimpiar);
 
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(187, 161, 132, 21);
-		contentPane.add(textPane);
+			JLabel lblNewLabel = new JLabel("Configurar agenda (Domicilio)");
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
+			lblNewLabel.setBounds(125, 10, 324, 21);
+			contentPane.add(lblNewLabel);
 
+			JLabel lblSiAunNo = new JLabel("Introduzca la fecha y seleccione la hora a la que desea pasar consulta:");
+			lblSiAunNo.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lblSiAunNo.setBounds(31, 31, 432, 27);
+			contentPane.add(lblSiAunNo);
+
+			JLabel texto_h = new JLabel("Horas diponibles");
+			texto_h.setBounds(31, 123, 128, 16);
+			contentPane.add(texto_h);
+
+			
+
+			JComboBox fecha = new JComboBox();
+			fecha.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						System.out.println(fecha.getSelectedItem().toString());
+						horas.setModel(
+								new DefaultComboBoxModel(GestorCitas.huecossinasignar(fecha.getSelectedItem().toString())));
+						horas.setEnabled(true);
+
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+
+				}
+			});
+
+			fecha.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
+
+			fecha.setBounds(185, 71, 134, 25);
+			contentPane.add(fecha);
+
+			JLabel texto_f = new JLabel("Fecha");
+			texto_f.setBounds(31, 75, 128, 16);
+			contentPane.add(texto_f);
+			
+			JButton buttonAceptar = new JButton("Aceptar");
+			buttonAceptar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						int resultado=GestorAgenda.rellenarAgenda(e1, horas.getSelectedItem().toString(), fecha.getSelectedItem().toString(), textAnotaciones.getText());
+						
+						System.out.println(resultado);
+						if (resultado == 2) {
+							textPaneEstado.setText("Se ha configurado la agenda correctamente.");
+						} else {
+							textPaneEstado.setText("No se ha creado la agenda correctamente.");
+						}
+						
+						buttonAceptar.setEnabled(false);
+						horas.setEnabled(false);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			buttonAceptar.setBounds(358, 69, 148, 29);
+			contentPane.add(buttonAceptar);
+			horas.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					buttonAceptar.setEnabled(true);
+				}
+			});
+			horas.setEnabled(false);
+			horas.setModel(new DefaultComboBoxModel());
+			horas.setBounds(185, 117, 134, 25);
+			contentPane.add(horas);
+			
+			JLabel Anotaciones = new JLabel("Anotaciones");
+			Anotaciones.setBounds(31, 167, 128, 16);
+			contentPane.add(Anotaciones);
+			
+			textAnotaciones = new JTextField();
+			textAnotaciones.setBounds(185, 167, 134, 29);
+			contentPane.add(textAnotaciones);
+			textAnotaciones.setColumns(10);
+		}
+	
 	}
-}
+	

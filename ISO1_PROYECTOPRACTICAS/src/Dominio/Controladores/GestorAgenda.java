@@ -42,13 +42,19 @@ public class GestorAgenda {
 		throw new UnsupportedOperationException();
 	}
 
-	public static int rellenarAgenda(Empleado e, String dia, String fecha) throws SQLException {
+	public static int rellenarAgenda(Empleado e, String dia, String fecha, String anotacion) throws SQLException {
 		int id = SlotDAO.obtenerID("sin_asignar", dia, fecha, "sin_asignar");
 		int resultado = 0;
 		System.out.println(resultado);
 		resultado = +SlotDAO.configurado(id, "clinica");
-		resultado=AgendaDAO.modificarAgenda(e.get_dni(), fecha, id);
-		System.out.println(resultado);
-		return resultado;
+		if (anotacion == null) {
+			resultado = +AgendaDAO.modificarAgenda(e.get_dni(), fecha, id);
+			System.out.println(resultado);
+			return resultado;
+		} else {
+			resultado = +AgendaDAO.modificarAgendaDomicilio(e.get_dni(), fecha, id, anotacion);
+			System.out.println(resultado);
+			return resultado;
+		}
 	}
 }

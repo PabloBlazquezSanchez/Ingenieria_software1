@@ -112,7 +112,7 @@ public class IUGestionarAClinica extends JFrame {
 		buttonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int resultado=GestorAgenda.rellenarAgenda(e1, horas.getSelectedItem().toString(), fecha.getSelectedItem().toString());
+					int resultado=GestorAgenda.rellenarAgenda(e1, horas.getSelectedItem().toString(), fecha.getSelectedItem().toString(),null);
 					
 					System.out.println(resultado);
 					if (resultado == 2) {
