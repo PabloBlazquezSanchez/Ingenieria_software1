@@ -69,10 +69,10 @@ public class IULoginEmpleado extends JFrame {
 						existe = true;
 					if (existe) {
 						if (b) {
-							IUGestionarADomicilio p = new IUGestionarADomicilio();
+							IUGestionarADomicilio p = new IUGestionarADomicilio(GestorUsuarios.ObtenerDatosEmpleado(textFieldLogin.getText(), textFieldPassword.getText()));
 							p.setVisible(true);
 						} else {
-							IUGestionarAClinica p = new IUGestionarAClinica();
+							IUGestionarAClinica p = new IUGestionarAClinica(GestorUsuarios.ObtenerDatosEmpleado(textFieldLogin.getText(), textFieldPassword.getText()));
 							p.setVisible(true);
 						}
 					} else {

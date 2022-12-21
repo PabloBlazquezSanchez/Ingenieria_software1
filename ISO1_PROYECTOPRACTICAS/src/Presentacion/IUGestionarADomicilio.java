@@ -21,34 +21,15 @@ import javax.swing.border.EmptyBorder;
 
 import Dominio.Controladores.GestorAgenda;
 import Dominio.Controladores.GestorCitas;
+import Dominio.Entidades.Empleado;
 import Dominio.Entidades.TipoAgenda;
 
 public class IUGestionarADomicilio extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IUGestionarADomicilio frame = new IUGestionarADomicilio();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 * 
-	 * @throws SQLException
-	 */
-	public IUGestionarADomicilio() throws SQLException {
+	public IUGestionarADomicilio(Empleado e) throws SQLException {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {

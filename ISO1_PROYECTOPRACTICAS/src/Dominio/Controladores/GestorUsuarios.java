@@ -43,6 +43,12 @@ public class GestorUsuarios {
 
 	}
 	
+	public static Empleado ObtenerDatosEmpleado(String NombreUsuario, String Contrasena) throws SQLException {
+		Empleado e = new Empleado(null, null, null, NombreUsuario, Contrasena, 0, null);
+		Empleado e2 = EmpleadoDAO.selectEmpleado(e);
+	
+		return e2;
+	}
 	
 	public void registrarPaciente() { //No entra en los casos de uso seleccionados
 		throw new UnsupportedOperationException();

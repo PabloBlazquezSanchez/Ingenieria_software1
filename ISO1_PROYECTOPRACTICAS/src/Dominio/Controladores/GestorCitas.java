@@ -65,7 +65,6 @@ public class GestorCitas {
 			}
 		}
 		return horas;
-
 	}
 
 	public void anularCita(Paciente aPaciente, Cita aCita) { // No entra en los casos de uso seleccionados.
