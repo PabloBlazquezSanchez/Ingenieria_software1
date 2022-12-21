@@ -53,11 +53,11 @@ public class CitaDAO {
 	}
 
 	public static int nuevaCita(String dnipac, String dniesp, String especialidad, int id) throws SQLException {
-		return GestorBaseDatos.getInstancia().insert("INSERT INTO cita (DNIPACIENTE, DNITRABAJADOR, TIPOCITA, IDSLOT) VALUES ('"
+		return GestorBaseDatos.getInstancia().insert("INSERT INTO cita (IDSLOT, DNIPACIENTE, DNITRABAJADOR, TIPOCITA) VALUES ('"
+				+id+"', '"
 				+ dnipac+"', '"
 				+ dniesp+"', '"
-				+ especialidad+"', "
-				+ id+"')");
+				+ especialidad+"')");
 		
 	}
 }
