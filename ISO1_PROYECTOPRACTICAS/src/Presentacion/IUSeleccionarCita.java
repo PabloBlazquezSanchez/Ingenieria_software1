@@ -28,7 +28,7 @@ import java.sql.SQLException;
 public class IUSeleccionarCita extends JFrame {
 	private JPanel contentPane;
 	private JTextPane textPaneEstado;
-	static boolean pulsar=false;
+	static boolean pulsar = false;
 	static String finalespecialidad;
 
 	public IUSeleccionarCita(Paciente p) throws SQLException {
@@ -48,7 +48,6 @@ public class IUSeleccionarCita extends JFrame {
 		contentPane.setLayout(null);
 
 		JButton buttonAceptar = new JButton("Aceptar");
-		
 
 		buttonAceptar.setBounds(358, 69, 148, 29);
 		contentPane.add(buttonAceptar);
@@ -97,7 +96,7 @@ public class IUSeleccionarCita extends JFrame {
 		JComboBox horasdisponibles = new JComboBox();
 		horasdisponibles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pulsar=true;
+				pulsar = true;
 			}
 		});
 		horasdisponibles.setEnabled(false);
@@ -117,7 +116,7 @@ public class IUSeleccionarCita extends JFrame {
 					especialidad = "podologo";
 				}
 				try {
-					finalespecialidad=especialidad;
+					finalespecialidad = especialidad;
 					horasdisponibles.setModel(new DefaultComboBoxModel(
 							GestorCitas.solicitarHoras(fecha.getSelectedItem().toString(), especialidad, p)));
 				} catch (SQLException e1) {
@@ -142,7 +141,7 @@ public class IUSeleccionarCita extends JFrame {
 				especialidad3.setEnabled(true);
 				horasdisponibles.setEnabled(false);
 				horasdisponibles.setModel(new DefaultComboBoxModel());
-				
+
 			}
 		});
 		fecha.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
@@ -151,24 +150,25 @@ public class IUSeleccionarCita extends JFrame {
 
 		horasdisponibles.setBounds(185, 173, 134, 25);
 		contentPane.add(horasdisponibles);
-		
+
 		buttonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-					try {
-						int resultado=GestorCitas.generarCita(fecha.getSelectedItem().toString(), finalespecialidad, p, horasdisponibles.getSelectedItem().toString());
 
-						if (resultado==2){
-							textPaneEstado.setText("Se ha creado la cita correctmente.");
-							} else {
-							textPaneEstado.setText("No se ha creado la cita correctmente.");
-						}
-					} catch (SQLException e1) {
-						e1.printStackTrace();
-						textPaneEstado.setText("Error");
-
+				try {
+					int resultado = GestorCitas.generarCita(fecha.getSelectedItem().toString(), finalespecialidad, p,
+							horasdisponibles.getSelectedItem().toString());
+					System.out.println(resultado);
+					if (resultado == 2) {
+						textPaneEstado.setText("Se ha creado la cita correctmente.");
+					} else {
+						textPaneEstado.setText("No se ha creado la cita correctmente.");
 					}
-			
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+					textPaneEstado.setText("Error");
+
+				}
+
 			}
 		});
 

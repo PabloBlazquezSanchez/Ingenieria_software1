@@ -42,7 +42,7 @@ public class SlotDAO {
 	}
 
 	public static int ocupado(int id) throws SQLException {
-		return GestorBaseDatos.getInstancia().update("UPDATE slot SET OCUPADO='true' WHERE ID=" + id + "");
+		return GestorBaseDatos.getInstancia().update("UPDATE slot SET OCUPADO='true' WHERE ID=" + id + "") +1 ;
 	}
 
 }

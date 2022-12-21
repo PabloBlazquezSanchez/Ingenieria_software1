@@ -72,7 +72,9 @@ public class GestorCitas {
 		int id = SlotDAO.obtenerID(dniesp, inicio, fecha);
 		int resultado = 0;
 		resultado = +CitaDAO.nuevaCita(p.get_dni(), dniesp, especialidad, id);
+		System.out.println(resultado);
 		resultado = +SlotDAO.ocupado(id);
+		System.out.println(resultado);
 		return resultado;
 	}
 }
