@@ -114,6 +114,7 @@ public class IUGestionarAClinica extends JFrame {
 				try {
 					GestorAgenda.rellenarAgenda(e1, horas.getSelectedItem().toString(), fecha.getSelectedItem().toString());
 					buttonAceptar.setEnabled(false);
+					horas.setEnabled(false);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
