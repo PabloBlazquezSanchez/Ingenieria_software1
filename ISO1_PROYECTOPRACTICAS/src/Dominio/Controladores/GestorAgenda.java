@@ -11,6 +11,7 @@ import java.util.Date;
 
 import Dominio.Entidades.Agenda;
 import Dominio.Entidades.Slot;
+import Persistencia.AgendaDAO;
 import Persistencia.CalendarioDAO;
 import Persistencia.CitaDAO;
 import Persistencia.HorarioDAO;
@@ -20,19 +21,18 @@ public class GestorAgenda {
 
 	public static String[] obtenerDatosCalendarioLaborable() throws SQLException {
 		Calendario c = CalendarioDAO.selectCalendario();
-		String[] fechas= new String[c.getDias_laborables().size()];
-		ArrayList<Date> dias_laborables=  c.getDias_laborables();
-		String h=dias_laborables.toString().replaceAll("[\\[\\](){}]", "");
-		h.split(", ");		
+		String[] fechas = new String[c.getDias_laborables().size()];
+		ArrayList<Date> dias_laborables = c.getDias_laborables();
+		String h = dias_laborables.toString().replaceAll("[\\[\\](){}]", "");
+		h.split(", ");
 		return h.split(", ");
-		
-	}
-	
-	public static void obtenerDatosHorariosDia(String fechatext) throws SQLException {
-		Horario h = HorarioDAO.selectHorario(fechatext);
-	
+
 	}
 
+	public static void obtenerDatosHorariosDia(String fechatext) throws SQLException {
+		Horario h = HorarioDAO.selectHorario(fechatext);
+
+	}
 
 	public void obtenerDatosCalendarios(Calendario aCalendarios) {
 
@@ -46,8 +46,8 @@ public class GestorAgenda {
 		int id = SlotDAO.obtenerID("sin_asignar", dia, fecha, "sin_asignar");
 		int resultado = 0;
 		System.out.println(resultado);
-		resultado = +SlotDAO.configurado(id,"clinica");
-		
+		resultado = +SlotDAO.configurado(id, "clinica");
+		resultado=AgendaDAO.modificarAgenda(e.get_dni(), fecha, id);
 		System.out.println(resultado);
 		return resultado;
 	}
