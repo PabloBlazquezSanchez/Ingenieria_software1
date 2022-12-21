@@ -14,14 +14,15 @@ public class HorarioDAO {
 
 		Vector horasLaborable = GestorBaseDatos.getInstancia()
 				.select("SELECT * FROM horario WHERE DIA='" + fechatext + "'");
-		Horario h = null;
-		horasLaborable = (Vector) horasLaborable.get(0);
+		Horario h = new Horario(null, null);;
 
 		if (horasLaborable.isEmpty()) {
 			System.out.println("Error");
 		} else {
-			String inicio = (String) horasLaborable.get(1);
-			String fin = (String) horasLaborable.get(2);
+			horasLaborable = (Vector) horasLaborable.get(0);
+			System.out.println(horasLaborable.toString());
+			String inicio = (String) horasLaborable.get(1).toString();
+			String fin = (String) horasLaborable.get(2).toString();
 			h = new Horario(inicio, fin);
 		}
 		return h;

@@ -17,13 +17,10 @@ import Dominio.Entidades.Empleado;
 public class GestorCitas {
 	public CitaDAO citaDAO;
 
-	public void solicitarCita(Date fecha, Paciente p, Especialista especialista) {
-	}
-
 	public static Date[] solicitarHoras(String fecha, String tipoespecialista, Paciente p) throws SQLException {
 		System.out.println(fecha + " " + tipoespecialista);
 		System.out.println(fecha + " " + tipoespecialista);
-		ArrayList<Slot> slots = SlotDAO.selectSlotsSingAsignar();
+		ArrayList<Slot> slots = SlotDAO.selectSlotsClinica();
 		ArrayList<Slot> slotsFiltrados = new ArrayList<Slot>();
 		Date[] horas = null;
 		boolean clave = false;
@@ -34,7 +31,7 @@ public class GestorCitas {
 			e = EmpleadoDAO.AsignarEmpleado(tipoespecialista);
 			clave = true;
 		}
-		// Filter the slots by the fecha and tipoespecialista
+
 		for (int i = 0; i < slots.size(); i++) {
 			String fechaslot = slots.get(i).getDia().toString();
 			String dnisslot = slots.get(i).getDniespc().toString();
@@ -47,6 +44,24 @@ public class GestorCitas {
 			horas = new Date[slotsFiltrados.size()];
 			for (int j = 0; j < slotsFiltrados.size(); j++) {
 				horas[j] = slotsFiltrados.get(j).getHoraInicio();
+			}
+		}
+		return horas;
+
+	}
+
+	public static Date[] huecossinasignar(String fecha) throws SQLException {
+		ArrayList<Slot> slots = SlotDAO.selectSinAsignar(fecha);
+		Date[] horas = null;
+		if (slots == null) {
+			horas = new Date[0];
+			return horas;
+		} else {
+			for (int i = 0; i < slots.size(); i++) {
+				horas = new Date[slots.size()];
+				for (int j = 0; j < slots.size(); j++) {
+					horas[j] = slots.get(j).getHoraInicio();
+				}
 			}
 		}
 		return horas;

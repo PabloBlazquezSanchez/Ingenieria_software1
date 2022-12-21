@@ -20,9 +20,10 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import Dominio.Controladores.GestorAgenda;
+import Dominio.Controladores.GestorCitas;
 import Dominio.Entidades.TipoAgenda;
 
-public class IUGestionarADomicilio extends JFrame  {
+public class IUGestionarADomicilio extends JFrame {
 
 	private JPanel contentPane;
 
@@ -44,13 +45,14 @@ public class IUGestionarADomicilio extends JFrame  {
 
 	/**
 	 * Create the frame.
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 */
 	public IUGestionarADomicilio() throws SQLException {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
-				
+
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +63,7 @@ public class IUGestionarADomicilio extends JFrame  {
 		contentPane.setLayout(null);
 
 		JButton buttonAceptar = new JButton("Aceptar");
-			
+
 		buttonAceptar.setBounds(358, 69, 148, 29);
 		contentPane.add(buttonAceptar);
 
@@ -84,63 +86,58 @@ public class IUGestionarADomicilio extends JFrame  {
 		});
 		buttonLimpiar.setBounds(358, 117, 148, 29);
 		contentPane.add(buttonLimpiar);
-		
+
 		JLabel lblNewLabel = new JLabel("Configurar agenda (Domicilio)");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel.setBounds(125, 10, 324, 21);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblSiAunNo = new JLabel("Introduzca la fecha y seleccione la hora a la que desea pasar consulta:");
 		lblSiAunNo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblSiAunNo.setBounds(31, 31, 432, 27);
 		contentPane.add(lblSiAunNo);
-		
-		JLabel id = new JLabel("Horas diponibles");
-		id.setBounds(31, 123, 128, 16);
-		contentPane.add(id);
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setEnabled(false);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"9:00-9:10", "9:10-9:20", "9:20-9:30", "9:30-9:40", "9:40-9:50"}));
-		comboBox.setBounds(185, 117, 134, 25);
-		contentPane.add(comboBox);
-		
-		
+		JLabel texto_h = new JLabel("Horas diponibles");
+		texto_h.setBounds(31, 123, 128, 16);
+		contentPane.add(texto_h);
+
+		JComboBox horas = new JComboBox();
+		horas.setEnabled(false);
+		horas.setModel(new DefaultComboBoxModel());
+		horas.setBounds(185, 117, 134, 25);
+		contentPane.add(horas);
+
 		JComboBox fecha = new JComboBox();
-		fecha.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
 		fecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(true);
 				try {
 					System.out.println(fecha.getSelectedItem().toString());
-					GestorAgenda.obtenerDatosHorariosDia(fecha.getSelectedItem().toString());
+					horas.setModel(new DefaultComboBoxModel(GestorCitas.huecossinasignar(fecha.getSelectedItem().toString())));
+					horas.setEnabled(true);
+
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 			}
 		});
+
 		fecha.setModel(new DefaultComboBoxModel(GestorAgenda.obtenerDatosCalendarioLaborable()));
 
 		fecha.setBounds(185, 71, 134, 25);
 		contentPane.add(fecha);
-		
-		JLabel lblEspecialidad = new JLabel("Fecha");
-		lblEspecialidad.setBounds(31, 75, 128, 16);
-		contentPane.add(lblEspecialidad);
-		
-		
 
-		
+		JLabel texto_f = new JLabel("Fecha");
+		texto_f.setBounds(31, 75, 128, 16);
+		contentPane.add(texto_f);
+
 		JLabel lblAnotaciones = new JLabel("Anotaciones");
 		lblAnotaciones.setBounds(31, 160, 128, 16);
 		contentPane.add(lblAnotaciones);
-		
+
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(187, 161, 132, 21);
 		contentPane.add(textPane);
-		
 
 	}
 }
