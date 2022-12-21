@@ -32,8 +32,8 @@ public class AgendaDAO {
 		Vector huecoslibres = GestorBaseDatos.getInstancia()
 				.select("SELECT * FROM agenda WHERE DNIESPECIALISTA='" + dniesp + "' AND DIA='" + fecha + "'");
 		Vector huecoindividual = (Vector) huecoslibres.get(0);
-		String slots = (String) huecoindividual.get(3);
-		String anotaciones = (String) huecoindividual.get(5);
+		String slots = (String) huecoindividual.get(5);
+		String anotaciones = (String) huecoindividual.get(4);
 	
 		
 		String nuevoSlot = slots + ", " + id;
