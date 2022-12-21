@@ -61,7 +61,7 @@ public class GestorCitas {
 		throw new UnsupportedOperationException();
 	}
 
-	public static void generarCita(String fecha, String especialidad, Paciente p, String inicio) throws SQLException {
+	public static int generarCita(String fecha, String especialidad, Paciente p, String inicio) throws SQLException {
 		Empleado e = null;
 		String dniesp = CitaDAO.selectCitaAnterior(p.get_dni(), especialidad);
 		if (dniesp.isEmpty()) {
@@ -69,10 +69,10 @@ public class GestorCitas {
 			e = EmpleadoDAO.AsignarEmpleado(especialidad);
 			dniesp = e.get_dni();
 		}
-		int id= SlotDAO.obtenerID(dniesp, inicio, fecha);
-		CitaDAO.nuevaCita(p.get_dni(),dniesp, especialidad, id);
-		
-		
-
+		int id = SlotDAO.obtenerID(dniesp, inicio, fecha);
+		int resultado = 0;
+		resultado = +CitaDAO.nuevaCita(p.get_dni(), dniesp, especialidad, id);
+		resultado = +SlotDAO.ocupado(id);
+		return resultado;
 	}
 }

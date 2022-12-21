@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import Dominio.Controladores.GestorAgenda;
 import Dominio.Controladores.GestorCitas;
+import Dominio.Controladores.GestorUsuarios;
 import Dominio.Entidades.Paciente;
 
 import javax.swing.JComboBox;
@@ -153,10 +154,19 @@ public class IUSeleccionarCita extends JFrame {
 		
 		buttonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 					try {
-						GestorCitas.generarCita(fecha.getSelectedItem().toString(), finalespecialidad, p, horasdisponibles.getSelectedItem().toString());
+						int resultado=GestorCitas.generarCita(fecha.getSelectedItem().toString(), finalespecialidad, p, horasdisponibles.getSelectedItem().toString());
+
+						if (resultado==2){
+							textPaneEstado.setText("Se ha creado la cita correctmente.");
+							} else {
+							textPaneEstado.setText("No se ha creado la cita correctmente.");
+						}
 					} catch (SQLException e1) {
 						e1.printStackTrace();
+						textPaneEstado.setText("Error");
+
 					}
 			
 			}

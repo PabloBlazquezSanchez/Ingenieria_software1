@@ -11,7 +11,8 @@ import Dominio.Entidades.Slot;
 
 public class SlotDAO {
 	public static ArrayList<Slot> selectSlotsSingAsignar() throws SQLException {
-		Vector huecoslibres = GestorBaseDatos.getInstancia().select("SELECT * FROM slot WHERE TIPOSLOT='clinica' AND OCUPADO='false'");
+		Vector huecoslibres = GestorBaseDatos.getInstancia()
+				.select("SELECT * FROM slot WHERE TIPOSLOT='clinica' AND OCUPADO='false'");
 		ArrayList<Slot> huecos_libres = new ArrayList<Slot>();
 		if (huecoslibres.isEmpty()) {
 			System.out.println("Error");
@@ -39,15 +40,9 @@ public class SlotDAO {
 		return id;
 
 	}
-	/*
-	 * public static int modificarSlot (String fecha, Paciente p, String inicio,
-	 * String tipo, String dniesp) throws SQLException {
-	 * 
-	 * GestorBaseDatos.getInstancia().update("UPDATE slot SET " + "tiposlot='" +
-	 * tipo + "' WHERE DNIESPECIALISTA='"+ dniesp+"' AND INICIO='"+inicio+"'");
-	 * 
-	 * 
-	 * }
-	 */
-}
 
+	public static int ocupado(int id) throws SQLException {
+		return GestorBaseDatos.getInstancia().update("UPDATE slot SET OCUPADO='true' WHERE ID=" + id + "");
+	}
+
+}
