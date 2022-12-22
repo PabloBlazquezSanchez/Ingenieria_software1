@@ -119,6 +119,9 @@ public class IUSeleccionarCita extends JFrame {
 					finalespecialidad = especialidad;
 					horasdisponibles.setModel(new DefaultComboBoxModel(
 							GestorCitas.solicitarHoras(fecha.getSelectedItem().toString(), especialidad, p)));
+					if (GestorCitas.solicitarHoras(fecha.getSelectedItem().toString(), especialidad, p).length == 0) {
+						textPaneEstado.setText("No se ha podido encontrar ningún hueco para la especialidad y fecha seleccionada.");
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 					System.out.println(e1);
