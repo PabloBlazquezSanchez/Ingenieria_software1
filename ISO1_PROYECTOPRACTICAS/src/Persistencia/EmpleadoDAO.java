@@ -23,7 +23,7 @@ public class EmpleadoDAO extends UsuarioDAO {
 			String rols = (String) datosEmpleado.get(3);
 			Rol rol = null;
 			for (Rol d : Rol.values()) {
-				if (d.equals(rols)) {
+				if (rols.equals(d.name())) {
 					rol = d;
 				}
 			}

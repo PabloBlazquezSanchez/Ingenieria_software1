@@ -9,3 +9,4 @@ public enum Rol {
 	MEDICO_CABECERA, 
 	ADMINISTRADOR;
 }
+
