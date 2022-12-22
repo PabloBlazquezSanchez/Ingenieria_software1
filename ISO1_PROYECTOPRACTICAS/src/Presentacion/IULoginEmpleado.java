@@ -29,6 +29,7 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import java.awt.Font;
+import javax.swing.JPasswordField;
 
 public class IULoginEmpleado extends JFrame {
 
@@ -54,7 +55,7 @@ public class IULoginEmpleado extends JFrame {
 		contentPane.add(textFieldLogin);
 		textFieldLogin.setColumns(10);
 
-		textFieldPassword = new JTextField();
+		textFieldPassword = new JPasswordField();
 		textFieldPassword.setColumns(10);
 		textFieldPassword.setBounds(144, 118, 134, 28);
 		contentPane.add(textFieldPassword);

@@ -93,6 +93,9 @@ public class IUGestionarADomicilio extends JFrame {
 						horas.setModel(
 								new DefaultComboBoxModel(GestorCitas.huecossinasignar(fecha.getSelectedItem().toString())));
 						horas.setEnabled(true);
+						if (GestorCitas.huecossinasignar(fecha.getSelectedItem().toString()).length == 0) {
+							textPaneEstado.setText("No se ha podido encontrar ningún hueco para poder configurar la agenda.");
+						}
 
 					} catch (SQLException e1) {
 						e1.printStackTrace();

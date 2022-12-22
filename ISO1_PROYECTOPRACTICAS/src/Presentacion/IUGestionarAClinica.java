@@ -91,6 +91,9 @@ public class IUGestionarAClinica extends JFrame {
 					horas.setModel(
 							new DefaultComboBoxModel(GestorCitas.huecossinasignar(fecha.getSelectedItem().toString())));
 					horas.setEnabled(true);
+					if (GestorCitas.huecossinasignar(fecha.getSelectedItem().toString()).length == 0) {
+						textPaneEstado.setText("No se ha podido encontrar ningún hueco para poder configurar la agenda.");
+					}
 
 				} catch (SQLException e1) {
 					e1.printStackTrace();
@@ -134,6 +137,7 @@ public class IUGestionarAClinica extends JFrame {
 		horas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				buttonAceptar.setEnabled(true);
+				
 			}
 		});
 		horas.setEnabled(false);
